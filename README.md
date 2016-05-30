@@ -14,8 +14,16 @@ Alternative implementation of the SplEnum class (as that is often not available 
 Enum is an object with value from one of those constants (or from one of superclass if any).
 There is also a __default constant that enables you to create an object without passing enum value.
 
+### Installation
 
-#### Example
+Install it via composer:
+
+```
+composer require konekt/enum
+```
+
+
+#### Example Of Usage
 
 ```php
 namespace App\Order;
