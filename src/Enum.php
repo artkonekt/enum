@@ -187,7 +187,7 @@ abstract class Enum
     /**
      * Initializes the constants array based on the constants defined in the concrete class
      */
-    private function populateConstants()
+    private static function populateConstants()
     {
         $class = static::class;
 
