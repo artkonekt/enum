@@ -181,11 +181,6 @@ class EnumTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($defn->getValue(), Sample123::__default);
         $this->assertEquals($defn->getValue(), 1);
     }
-
-    public function testAha()
-    {
-        print_r(SampleStatus::toArray(true));
-    }
-
+    
 
 }
