@@ -15,7 +15,6 @@ namespace Konekt\Enum\Tests;
 
 use Konekt\Enum\Tests\Fixture\Sample123;
 use Konekt\Enum\Tests\Fixture\SampleOneTwoThree;
-use Konekt\Enum\Tests\Fixture\SampleStatus;
 
 class EnumTest extends \PHPUnit_Framework_TestCase
 {

@@ -45,6 +45,8 @@ abstract class Enum
 
     private static $constants = [];
 
+    protected static $displayTexts = [];
+
 
     /**
      * Returns the key value pair array of all defined constants in enum class.
@@ -93,6 +95,44 @@ abstract class Enum
     public static function hasKey($key)
     {
         return array_key_exists($key, static::toArray());
+    }
+
+
+    /**
+     * Returns the list of choices: key/value pair that contains const values as key and display text as value
+     * in case display text is set, value as fallback.
+     *
+     * Useful for dropdown boxes
+     *
+     * E.g.:
+     *      ```
+     *          const FOO = 'foo';
+     *          const BAR = 'bar'
+     *
+     *          protected static $displayTexts = [
+     *              self::FOO => 'I am foo',
+     *              self::BAR => 'I am bar'
+     *          ];
+     *      ```
+     *      self::choices returns:
+     *      ```
+     *          [
+     *              'foo' => 'I am foo',
+     *              'bar' => 'I am bar'
+     *          ]
+     *      ```
+     *
+     * @return array
+     */
+    public static function choices()
+    {
+        $result = [];
+
+        foreach (static::toArray() as $key => $value) {
+            $result[$value] = isset(static::$displayTexts[$value]) ? static::$displayTexts[$value] : $value;
+        }
+
+        return $result;
     }
 
     /**
@@ -146,6 +186,18 @@ abstract class Enum
         $this->strict  = $strict;
     }
 
+    /**
+     * Returns the display text (user friendly representation) of the value
+     *
+     * @return string
+     */
+    public function getDisplayText()
+    {
+        $result = isset(static::$displayTexts[$this->value]) ? static::$displayTexts[$this->value] : $this->value;
+
+        return is_null($result) ? '' : $result;
+    }
+
 
     /**
      * Returns the value of the object
@@ -164,7 +216,7 @@ abstract class Enum
      */
     public function __toString()
     {
-        return (string) $this->value;
+        return (string) $this->getDisplayText();
     }
 
     /**

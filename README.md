@@ -1,4 +1,4 @@
-# Enum
+# Konekt Enum
 
 [![Latest Stable Version](https://poser.pugx.org/konekt/enum/version.png)](https://packagist.org/packages/konekt/enum)
 [![Total Downloads](https://poser.pugx.org/konekt/enum/downloads.png)](https://packagist.org/packages/konekt/enum)
@@ -13,6 +13,8 @@ Alternative implementation of the SplEnum class (as that is often not available 
 
 Enum is an object with value from one of those constants (or from one of superclass if any).
 There is also a __default constant that enables you to create an object without passing enum value.
+
+[Changelog](Changelog.md)
 
 ### Installation
 
@@ -38,6 +40,14 @@ final class Status extends Enum
     const CONFIRMED      = 'confirmed';
     const PROCESSING     = 'processing';
     const COMPLETED      = 'completed';
+    
+    /** @var array Display texts are optional and are available beginning from version 1.1 */
+    protected static $displayTexts = [
+        self::PLACED     => 'Placed',
+        self::CONFIRMED  => 'Confirmed',
+        self::PROCESSING => 'Processing',
+        self::COMPLETED  => 'Completed'    
+    ];
 }
 ```
 
@@ -105,6 +115,80 @@ class OrderController
 }
 ```
 
+#### Display Texts
+
+As of version 1.1 you can optionally set display texts for enum values. this is a protected static array containing enum values as keys and user friendly texts a values:
+
+```php
+/** @var array Display texts are optional and are available beginning from version 1.1 */
+    protected static $displayTexts = [
+        self::PLACED     => 'Placed',
+        self::CONFIRMED  => 'Confirmed',
+        self::PROCESSING => 'Processing',
+        self::COMPLETED  => 'Completed'    
+    ];
+```
+
+You can use two methods for utilizing display texts `choices()` _(static)_ and `getDisplayText()` for an object instance.
+
+The `getDisplayText()` method returns the display text for a specific instance value. If it is not set via the `$displayTexts` property, defaults to the enum value:
+
+```php
+final class BarType extends Enum
+{
+    const CREATED        = 'created';
+    const ACTIVE         = 'active';
+    const CLOSED         = 'closed';
+    
+    /** @var array Display texts are optional and are available beginning from version 1.1 */
+    protected static $displayTexts = [
+        self::CREATED    => 'New Bar',
+        self::ACTIVE     => 'Ongoing Bar'  
+    ];
+}
+
+$created = BarType::CREATED();
+echo $created->getDisplayText();
+//outputs: 'New Bar'
+
+$active = BarType::ACTIVE();
+echo $active->getDisplayText();
+//outputs: 'Ongoing Bar'
+
+$closed = BarType::CLOSED();
+echo $closed->getDisplayText();
+//outputs: 'closed' -> fallback to enum value since no displayText was set 
+
+
+```
+
+The `choices()` method returns all the available choices along with their display texts. Useful for selects/dropdowns:
+
+```php
+final class BarType extends Enum
+{
+    const CREATED        = 'created';
+    const ACTIVE         = 'active';
+    const CLOSED         = 'closed';
+    
+    /** @var array Display texts are optional and are available beginning from version 1.1 */
+    protected static $displayTexts = [
+        self::CREATED    => 'New Bar',
+        self::ACTIVE     => 'Ongoing Bar'  
+    ];
+}
+
+print_r(BarType::choices());
+//Outputs:
+//Array
+//(
+//    [created]     => 'New Bar'
+//    [active]  => 'Ongoing Bar'
+//    [closed] => 'closed'
+//)
+
+```
+
 #### Method Examples
 
 ```php
@@ -115,6 +199,9 @@ use App\Order\Status;
 $completed = Status::COMPLETED();
 
 echo $completed;
+//outputs: 'Completed'
+
+echo $completed->getValue();
 //outputs: 'completed'
 
 
@@ -123,6 +210,9 @@ echo $completed;
 $confirmed = new Status(Status::CONFIRMED);
 
 echo $confirmed;
+//output: 'Confirmed'
+
+echo $confirmed->getValue();
 //output: 'confirmed'
 
 
@@ -131,7 +221,7 @@ echo $confirmed;
 $status = new Status();
 
 echo $status;
-//output: 'placed'
+//output: 'Placed'
 //due to having a __default value set and magic __toString() method
 
 
@@ -168,6 +258,15 @@ print_r(Status::toArray(true));
 //      [PROCESSING] => processing
 //      [COMPLETED] => completed
 //  )
+
+print_r(Status::choices());
+//Array
+//(
+//    [placed]     => 'Placed'
+//    [confirmed]  => 'Confirmed'
+//    [processing] => 'Processing'
+//    [completed]  => 'Completed'
+//)
 
 echo Status::hasKey('PLACED') ? 'yes' : 'no';
 //output: 'yes'
