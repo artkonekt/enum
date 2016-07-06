@@ -182,9 +182,9 @@ print_r(BarType::choices());
 //Outputs:
 //Array
 //(
-//    [created]     => 'New Bar'
+//    [created] => 'New Bar'
 //    [active]  => 'Ongoing Bar'
-//    [closed] => 'closed'
+//    [closed]  => 'closed'
 //)
 
 ```
