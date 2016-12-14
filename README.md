@@ -117,7 +117,12 @@ class OrderController
 
 #### Display Texts
 
-As of version 1.1 you can optionally set display texts for enum values. this is a protected static array containing enum values as keys and user friendly texts a values:
+As of version 1.1 you can optionally set display texts for enum values.
+You can define them either by a static array or with a callback method (v1.2).
+
+##### Via Static Array
+
+This is protected static array containing enum values as keys and user friendly texts a values:
 
 ```php
 /** @var array Display texts are optional and are available beginning from version 1.1 */
@@ -127,6 +132,48 @@ As of version 1.1 you can optionally set display texts for enum values. this is 
         self::PROCESSING => 'Processing',
         self::COMPLETED  => 'Completed'    
     ];
+```
+
+##### Via Callback Method
+
+In case your concrete Enum class contains a protected method called `fetchDisplayText($value)` then it is used for fetching the display text. This can be useful if the display text needs to be dynamic, eg. translatable.
+
+*Example: returning translated display text with gettext:*
+
+```php
+final class OffsitePaymentMethod extends Enum
+{
+    const __default = self::WIRE_TRANSFER;
+
+    const WIRE_TRANSFER     = 'wire_transfer';
+    const CASH              = 'cash';
+    const POS               = 'pos';
+    const CASH_ON_DELIVERY  = 'cash_on_delivery';
+    
+    /**
+     * Returns the display text translated to the current locale (using gettext)
+     * This way source tools like poEdit can properly identify the strings for translation files 
+     */
+    protected function fetchDisplayText($value)
+    {
+        switch ($value) {
+            case self::WIRE_TRANSFER:
+                return __('Wire Transfer');
+                break;
+            case self::CASH:
+                return __('Cash');
+                break;
+            case self::POS:
+                return __('Pos terminal');
+                break;
+            case self::CASH_ON_DELIVERY:
+                return __('Cash on delivery');
+                break;
+            default:
+                return __('Actually this won\'t happen due to the __default');
+        }
+    }
+}
 ```
 
 You can use two methods for utilizing display texts `choices()` _(static)_ and `getDisplayText()` for an object instance.

@@ -4,7 +4,7 @@
  *
  * @copyright   Copyright (c) 2016 Storm Storez Srl-D
  * @author      Attila Fulop
- * @license     Proprietary
+ * @license     MIT
  * @since       2016-07-06
  *
  */
@@ -13,6 +13,7 @@
 namespace Konekt\Enum\Tests;
 
 use Konekt\Enum\Tests\Fixture\SampleDisplayText;
+use Konekt\Enum\Tests\Fixture\SampleDisplayTextWithMethod;
 use Konekt\Enum\Tests\Fixture\SampleNoDisplayText;
 use Konekt\Enum\Tests\Fixture\SamplePartialDisplayText;
 
@@ -152,9 +153,25 @@ class DisplayTextsTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(SamplePartialDisplayText::BAZ, (string)$bazp2);
     }
 
-    public function testAz()
+    public function testDisplayTextWithGetterMethod()
     {
-        print_r(SampleDisplayText::choices());
+        $foo = SampleDisplayTextWithMethod::FOO();
+        $this->assertEquals('Foo is good', $foo->getDisplayText());
+        $this->assertEquals('Foo is good', (string)$foo);
+
+        $bar = SampleDisplayTextWithMethod::BAR();
+        $this->assertEquals('Bar is better', $bar->getDisplayText());
+        $this->assertEquals('Bar is better', (string)$bar);
+
+        $baz = SampleDisplayTextWithMethod::BAZ();
+        $this->assertEquals('Baz is best', $baz->getDisplayText());
+        $this->assertEquals('Baz is best', (string)$baz);
+
+        // Test empty value
+        $fooBarBaz = new SampleDisplayTextWithMethod();
+        $this->assertEquals('Foo Bar Baz', $fooBarBaz->getDisplayText());
+        $this->assertEquals('Foo Bar Baz', (string)$fooBarBaz);
+
     }
 
 }

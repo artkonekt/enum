@@ -4,7 +4,7 @@
  *
  * @copyright   Copyright (c) 2016 Storm Storez Srl-D
  * @author      Attila Fulop
- * @license     Proprietary
+ * @license     MIT
  * @since       2016-07-06
  *
  */

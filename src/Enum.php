@@ -8,7 +8,7 @@
  * @author      Attila Fulop
  * @license     MIT
  * @since       2013-09-23
- * @version     2016-05-30
+ * @version     2016-12-14
  *
  */
 
@@ -193,7 +193,11 @@ abstract class Enum
      */
     public function getDisplayText()
     {
-        $result = isset(static::$displayTexts[$this->value]) ? static::$displayTexts[$this->value] : $this->value;
+        if (method_exists($this, 'fetchDisplayText')) { // use the getter method if it exists
+            $result = $this->fetchDisplayText($this->value);
+        } else {
+            $result = isset(static::$displayTexts[$this->value]) ? static::$displayTexts[$this->value] : $this->value;
+        }
 
         return is_null($result) ? '' : $result;
     }

@@ -1,5 +1,12 @@
 # Konekt Enum Changelog
  
+## 1.2
+
+### 1.2.0
+###### 2016-12-14
+
+- Display texts can be fetched dynamically via callback method
+ 
 ## 1.1
 
 ### 1.1.0
