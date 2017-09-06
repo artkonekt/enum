@@ -16,8 +16,9 @@ use Konekt\Enum\Tests\Fixture\SampleDisplayText;
 use Konekt\Enum\Tests\Fixture\SampleDisplayTextWithMethod;
 use Konekt\Enum\Tests\Fixture\SampleNoDisplayText;
 use Konekt\Enum\Tests\Fixture\SamplePartialDisplayText;
+use PHPUnit\Framework\TestCase;
 
-class DisplayTextsTest extends \PHPUnit_Framework_TestCase
+class DisplayTextsTest extends TestCase
 {
     public function testChoices()
     {

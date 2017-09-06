@@ -13,8 +13,9 @@
 namespace Konekt\Enum\Tests;
 
 use Konekt\Enum\Tests\Fixture\SampleFooBarNoDefault;
+use PHPUnit\Framework\TestCase;
 
-class EnumNoDefaultTest extends \PHPUnit_Framework_TestCase
+class EnumNoDefaultTest extends TestCase
 {
     public function testMagicConstructor()
     {

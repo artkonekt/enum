@@ -16,7 +16,9 @@ namespace Konekt\Enum\Tests;
 use Konekt\Enum\Tests\Fixture\Sample123;
 use Konekt\Enum\Tests\Fixture\SampleOneTwoThree;
 
-class EnumTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class EnumTest extends TestCase
 {
 
     public function testToString()
@@ -37,15 +39,6 @@ class EnumTest extends \PHPUnit_Framework_TestCase
         $three = new Sample123(Sample123::THREE);
         $this->assertEquals('3', (string) $three);
         $this->assertNotEquals('33', (string) $three);
-    }
-
-    public function testStrict()
-    {
-        $strictOne = new Sample123(Sample123::ONE, true);
-        $looseOne  = new Sample123('1', false);
-
-        $this->assertFalse($strictOne->equals($looseOne));
-        $this->assertTrue($looseOne->equals($strictOne));
     }
 
     public function testMagicConstructor()
@@ -71,7 +64,7 @@ class EnumTest extends \PHPUnit_Framework_TestCase
 
     public function testMagicConstructorFails()
     {
-        $this->setExpectedException(\BadMethodCallException::class);
+        $this->expectException(\BadMethodCallException::class);
 
         $four = SampleOneTwoThree::FOUR();
     }

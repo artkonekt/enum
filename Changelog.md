@@ -1,5 +1,16 @@
 # Konekt Enum Changelog
- 
+
+## 2.0
+
+### Unreleased
+
+- Minimum PHP version is 7.0
+- Strict mode removed
+
+###### 2017-09-06
+
+Development of v2 has been started.
+
 ## 1.2
 
 ### 1.2.0

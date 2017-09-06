@@ -3,12 +3,11 @@
  * Contains the Abstract Enum Component Class
  *
  * @copyright   Copyright (c) 2012 Marijan Suflaj
- * @copyright   Copyright (c) 2013-2016 Attila Fulop
- * @author      Marijan Suflaj
+ * @copyright   Copyright (c) 2013-2017 Attila Fulop
+ * @author      Marijan Suflaj (original author)
  * @author      Attila Fulop
  * @license     MIT
  * @since       2013-09-23
- * @version     2016-12-14
  *
  */
 
@@ -17,31 +16,17 @@ namespace Konekt\Enum;
 
 
 /**
- * Abstract class that enables creation of PHP enums. All you have to do is extend this class
- * and define some constants.
+ * Abstract class that enables creation of PHP enums.
  *
- * Alternative implementation of the SplEnum class (as that is often not
- * available on php installations)
- *
- * Enum is an object with value from one of those constants (or from one of superclass if any).
- * There is also a __default constant that enables you to create an object without passing enum value.
- *
- * @author     Marijan Suflaj
- * @link       http://php4every1.com
- * @see http://php.net/manual/en/class.splenum.php
- * @see http://www.php4every1.com/scripts/php-enum/
+ * All you have to do is extend this class and define some constants.
  */
 abstract class Enum
 {
-
     /** Constant with default value for creating enum object */
     const __default = null;
 
     /** @var mixed|null  */
     protected $value;
-
-    /** @var bool Whether or not in strict mode */
-    private $strict;
 
     private static $constants = [];
 
@@ -159,11 +144,10 @@ abstract class Enum
      * class to work as expected.
      *
      * @param   mixed    $initialValue     Any value that is exists in defined constants
-     * @param   bool     $strict           If set to true, type and value must be equal
      *
      * @throws  \UnexpectedValueException   If value is not valid enum value
      */
-    public function __construct($initialValue = null, $strict = true)
+    public function __construct($initialValue = null)
     {
 
         $class = get_class($this);
@@ -178,12 +162,11 @@ abstract class Enum
 
         $temp = self::$constants[$class];
 
-        if (!in_array($initialValue, $temp, $strict)) {
+        if (!in_array($initialValue, $temp)) {
             throw new \UnexpectedValueException(sprintf("Given value (%s) is not in enum `%s`", $initialValue, $class));
         }
 
         $this->value   = $initialValue;
-        $this->strict  = $strict;
     }
 
     /**
@@ -225,7 +208,6 @@ abstract class Enum
 
     /**
      * Checks if two enums are equal. Only value is checked, not class type also.
-     * If enum was created with $strict = true, then strict comparison applies here also.
      *
      * @param   mixed   $object
      *
@@ -237,7 +219,7 @@ abstract class Enum
             return false;
         }
 
-        return $this->strict ? ($this->value === $object->value) : ($this->value == $object->value);
+        return $this->value == $object->value;
     }
 
     /**

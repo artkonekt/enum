@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the BasicTest.php class.
+ * Contains the BasicTest class.
  *
  * @copyright   Copyright (c) 2016 Attila Fulop
  * @author      Attila Fulop
@@ -12,10 +12,12 @@
 
 namespace Konekt\Enum\Tests;
 
+use PHPUnit\Framework\TestCase;
 
-class BasicTest extends \PHPUnit_Framework_TestCase
+
+class BasicTest extends TestCase
 {
-    const MIN_PHP_VERSION = '5.5.9';
+    const MIN_PHP_VERSION = '7.0.0';
 
     /**
      * Very Basic smoke test case for testing against parse errors, etc
