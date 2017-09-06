@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the SampleOne.php class.
+ * Contains the SampleOneTwoThree class.
  *
  * @copyright   Copyright (c) 2016 Attila Fulop
  * @author      Attila Fulop

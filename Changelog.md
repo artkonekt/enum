@@ -4,6 +4,8 @@
 
 ### Unreleased
 
+- Rewritten from scratch
+- API has changed completely, with clarity as primary scope
 - Minimum PHP version is 7.0
 - Strict mode removed
 

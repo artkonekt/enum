@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the SampleDisplayText.php class.
+ * Contains the SampleDisplayText class.
  *
  * @copyright   Copyright (c) 2016 Storm Storez Srl-D
  * @author      Attila Fulop

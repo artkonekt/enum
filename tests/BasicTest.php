@@ -21,8 +21,10 @@ class BasicTest extends TestCase
 
     /**
      * Very Basic smoke test case for testing against parse errors, etc
+     *
+     * @test
      */
-    public function testSmoke()
+    public function smoke()
     {
         $this->assertTrue(true);
     }
@@ -30,9 +32,10 @@ class BasicTest extends TestCase
     /**
      * Test for minimum PHP version
      *
-     * @depends testSmoke
+     * @depends smoke
+     * @test
      */
-    public function testPhpVersion()
+    public function php_version_satisfies_requirements()
     {
         $this->assertFalse(version_compare(PHP_VERSION, self::MIN_PHP_VERSION, '<'),
             'PHP version ' . self::MIN_PHP_VERSION . ' or greater is required but only '

@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the SampleStatus.php class.
+ * Contains the SampleStatus class.
  *
  * @copyright   Copyright (c) 2016 Storm Storez Srl-D
  * @author      Attila Fulop

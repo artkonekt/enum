@@ -18,6 +18,9 @@ use Konekt\Enum\Tests\Fixture\SampleOneTwoThree;
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @deprecated
+ */
 class EnumTest extends TestCase
 {
 
@@ -39,34 +42,6 @@ class EnumTest extends TestCase
         $three = new Sample123(Sample123::THREE);
         $this->assertEquals('3', (string) $three);
         $this->assertNotEquals('33', (string) $three);
-    }
-
-    public function testMagicConstructor()
-    {
-        $one = new SampleOneTwoThree(SampleOneTwoThree::ONE);
-
-        $this->assertEquals($one, SampleOneTwoThree::ONE());
-    }
-
-    public function testMagicConstructorNumeric()
-    {
-        $one = new Sample123(Sample123::ONE);
-
-        $this->assertEquals($one, Sample123::ONE());
-    }
-
-    public function testMagicConstructorByValue()
-    {
-        $this->assertEquals('one', SampleOneTwoThree::ONE());
-        $this->assertEquals('two', SampleOneTwoThree::TWO());
-        $this->assertEquals('three', SampleOneTwoThree::THREE());
-    }
-
-    public function testMagicConstructorFails()
-    {
-        $this->expectException(\BadMethodCallException::class);
-
-        $four = SampleOneTwoThree::FOUR();
     }
 
     public function testToArray()

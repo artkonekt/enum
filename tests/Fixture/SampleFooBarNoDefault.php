@@ -1,6 +1,6 @@
 <?php
 /**
- * Contains the SampleNoDefault.php class.
+ * Contains the SampleFooBarNoDefault class.
  *
  * @copyright   Copyright (c) 2016 Attila Fulop
  * @author      Attila Fulop

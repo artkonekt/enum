@@ -1,14 +1,11 @@
 <?php
 /**
- * Contains the Abstract Enum Component Class
+ * Contains the Enum Class
  *
- * @copyright   Copyright (c) 2012 Marijan Suflaj
  * @copyright   Copyright (c) 2013-2017 Attila Fulop
- * @author      Marijan Suflaj (original author)
  * @author      Attila Fulop
  * @license     MIT
  * @since       2013-09-23
- *
  */
 
 
@@ -28,100 +25,64 @@ abstract class Enum
     /** @var mixed|null  */
     protected $value;
 
-    private static $constants = [];
-
-    protected static $displayTexts = [];
-
+    private static $meta = [];
 
     /**
-     * Returns the key value pair array of all defined constants in enum class.
+     * Class constructor
      *
-     * @param   bool     $includeDefault      If true, default value is included into return
+     * @param   mixed    $value     Any defined value
      *
-     * @return  array    Array with constant values
+     * @throws  \UnexpectedValueException   If value is not valid enum value
      */
-    public static function toArray($includeDefault = false)
+    public function __construct($value = null)
     {
+        self::boot();
 
-        $class = static::class;
-
-        if (!array_key_exists($class, self::$constants)) {
-            self::populateConstants();
+        if (is_null($value)) {
+            $value = static::__default;
         }
 
-        $result = self::$constants[$class];
-        if (!$includeDefault && array_key_exists('__default', $result)) {
-            unset($result['__default']);
+        if (!static::has($value)) {
+            throw new \UnexpectedValueException(
+                sprintf("Given value (%s) is not in enum `%s`",
+                    $value, static::class
+                )
+            );
         }
 
-        return $result;
-    }
-
-
-    /**
-     * Returns whether a certain value is within the predefined constants
-     *
-     * @param   mixed   $value      The scalar value (string, int, etc) that should be checked
-     *
-     * @return  bool    Returns true if the given valie is among the class's constants
-     */
-    public static function hasValue($value)
-    {
-        return in_array($value, static::toArray(), true);
+        //trick below is needed to make sure the value of original type gets set
+        $this->value = static::values()[array_search($value, static::values())];
     }
 
     /**
-     * Returns whether a key (const name) is present in the specific enum class
+     * Returns the value of the enum instance
      *
-     * @param   string  $key    The name of the key (const)
-     *
-     * @return bool
+     * @return mixed
      */
-    public static function hasKey($key)
+    public function value()
     {
-        return array_key_exists($key, static::toArray());
+        return $this->value;
     }
 
-
     /**
-     * Returns the list of choices: key/value pair that contains const values as key and display text as value
-     * in case display text is set, value as fallback.
+     * Checks if two enums are equal. Value and class are both matched.
+     * Value check is not type strict.
      *
-     * Useful for dropdown boxes
+     * @param   mixed    $object
      *
-     * E.g.:
-     *      ```
-     *          const FOO = 'foo';
-     *          const BAR = 'bar'
-     *
-     *          protected static $displayTexts = [
-     *              self::FOO => 'I am foo',
-     *              self::BAR => 'I am bar'
-     *          ];
-     *      ```
-     *      self::choices returns:
-     *      ```
-     *          [
-     *              'foo' => 'I am foo',
-     *              'bar' => 'I am bar'
-     *          ]
-     *      ```
-     *
-     * @return array
+     * @return  bool     True if enums are equal
      */
-    public static function choices()
+    public function equals($object)
     {
-        $result = [];
-
-        foreach (static::toArray() as $key => $value) {
-            $result[$value] = isset(static::$displayTexts[$value]) ? static::$displayTexts[$value] : $value;
+        if ( ! ($object instanceof Enum) || ! self::compatibles(get_class($object), static::class)) {
+            return false;
         }
 
-        return $result;
+        return $this->value() == $object->value();
     }
 
     /**
-     * Magic constructor to be used like: FancyEnum::SHINY_VALUE() where the method name is a valid const value of the class
+     * Magic constructor to be used like: FancyEnum::SHINY_VALUE() where the method name is a const of the class
      *
      * @param string $name
      * @param array  $arguments
@@ -131,122 +92,108 @@ abstract class Enum
      */
     public static function __callStatic($name, $arguments)
     {
-        if (self::hasKey($name)) {
-            return new static(self::getValueByKey($name));
+        if (self::hasConst($name)) {
+            return new static(constant(static::class . '::' . $name));
         }
 
-        throw new \BadMethodCallException(sprintf("No such value (`%s`) or static method in this class %s", $name, static::class));
+        throw new \BadMethodCallException(
+            sprintf("No such value (`%s`) or static method in this class %s",
+                $name, static::class
+            )
+        );
     }
 
     /**
-     * Creates new enum object. If child class overrides __construct(),
-     * it is required to call parent::__construct() in order for this
-     * class to work as expected.
+     * Factory method for creating instance
      *
-     * @param   mixed    $initialValue     Any value that is exists in defined constants
+     * @param mixed|null $value  The value for the instance
      *
-     * @throws  \UnexpectedValueException   If value is not valid enum value
+     * @return static
      */
-    public function __construct($initialValue = null)
+    public static function create($value = null)
     {
+        return new static($value);
+    }
 
-        $class = get_class($this);
+    /**
+     * Returns whether a const is present in the specific enum class
+     *
+     * @param   string  $const
+     *
+     * @return bool
+     */
+    public static function hasConst($const)
+    {
+        return in_array($const, static::consts());
+    }
 
-        if (!array_key_exists($class, self::$constants)) {
-            self::populateConstants();
+    /**
+     * Returns the consts (except for __default) of the class
+     *
+     * @return array
+     */
+    public static function consts()
+    {
+        self::boot();
+
+        return array_keys(self::$meta[static::class]);
+    }
+
+    /**
+     * Returns whether the enum contains the given value
+     *
+     * @param mixed $value
+     *
+     * @return bool
+     */
+    public static function has($value)
+    {
+        return in_array($value, static::values());
+    }
+
+    /**
+     * Returns the array of values
+     *
+     * @return array
+     */
+    public static function values()
+    {
+        self::boot();
+
+        return array_values(self::$meta[static::class]);
+    }
+
+    /**
+     * Initializes the constants array for the class if necessary
+     */
+    private static function boot()
+    {
+        if (!array_key_exists(static::class, self::$meta)) {
+            self::$meta[static::class] = (new \ReflectionClass(static::class))->getConstants();
+            unset(self::$meta[static::class]['__default']);
+        }
+    }
+
+    /**
+     * Returns whether two enum classes are compatible (are the same type or one descends from the other)
+     *
+     * @param string    $class1
+     * @param string    $class2
+     *
+     * @return bool
+     */
+    private static function compatibles($class1, $class2)
+    {
+        if ($class1 == $class2) {
+            return true;
+        } elseif (is_subclass_of($class1, $class2)) {
+            return true;
+        } elseif (is_subclass_of($class2, $class1)) {
+            return true;
         }
 
-        if (null === $initialValue) {
-            $initialValue = self::$constants[$class]["__default"];
-        }
-
-        $temp = self::$constants[$class];
-
-        if (!in_array($initialValue, $temp)) {
-            throw new \UnexpectedValueException(sprintf("Given value (%s) is not in enum `%s`", $initialValue, $class));
-        }
-
-        $this->value   = $initialValue;
+        return false;
     }
 
-    /**
-     * Returns the display text (user friendly representation) of the value
-     *
-     * @return string
-     */
-    public function getDisplayText()
-    {
-        if (method_exists($this, 'fetchDisplayText')) { // use the getter method if it exists
-            $result = $this->fetchDisplayText($this->value);
-        } else {
-            $result = isset(static::$displayTexts[$this->value]) ? static::$displayTexts[$this->value] : $this->value;
-        }
-
-        return is_null($result) ? '' : $result;
-    }
-
-
-    /**
-     * Returns the value of the object
-     *
-     * @return mixed
-     */
-    public function getValue()
-    {
-        return $this->value;
-    }
-
-    /**
-     * Returns string representation of an enum. Defaults to the value casted to string.
-     *
-     * @return  string      String representation of this enum's value
-     */
-    public function __toString()
-    {
-        return (string) $this->getDisplayText();
-    }
-
-    /**
-     * Checks if two enums are equal. Only value is checked, not class type also.
-     *
-     * @param   mixed   $object
-     *
-     * @return  bool     True if enums are equal
-     */
-    public function equals($object)
-    {
-        if (!($object instanceof Enum)) {
-            return false;
-        }
-
-        return $this->value == $object->value;
-    }
-
-    /**
-     * Initializes the constants array based on the constants defined in the concrete class
-     */
-    private static function populateConstants()
-    {
-        $class = static::class;
-
-        $r = new \ReflectionClass($class);
-        $constants = $r->getConstants();
-
-        self::$constants = array($class => $constants);
-    }
-
-    /**
-     * Returns a value assigned to a key (const name)
-     *
-     * @param string    $key    The name of the const (key)
-     *
-     * @return mixed    The value assigned to the const, NULL if not found
-     */
-    private static function getValueByKey($key)
-    {
-        $arr = static::toArray(true);
-
-        return array_key_exists($key, $arr) ? $arr[$key] : NULL;
-    }
 
 }

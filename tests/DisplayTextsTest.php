@@ -18,6 +18,9 @@ use Konekt\Enum\Tests\Fixture\SampleNoDisplayText;
 use Konekt\Enum\Tests\Fixture\SamplePartialDisplayText;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @deprecated
+ */
 class DisplayTextsTest extends TestCase
 {
     public function testChoices()

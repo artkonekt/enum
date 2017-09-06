@@ -1,11 +1,11 @@
 <?php
 /**
- * Contains the Sample123 class.
+ * Contains the Another123 class.
  *
- * @copyright   Copyright (c) 2016 Attila Fulop
+ * @copyright   Copyright (c) 2017 Attila Fulop
  * @author      Attila Fulop
  * @license     MIT
- * @since       2016-05-30
+ * @since       2017-09-07
  *
  */
 
@@ -14,7 +14,7 @@ namespace Konekt\Enum\Tests\Fixture;
 
 use Konekt\Enum\Enum;
 
-class Sample123 extends Enum
+class Another123 extends Enum
 {
     const __default = self::ONE;
     
