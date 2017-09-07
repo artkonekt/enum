@@ -25,6 +25,8 @@ abstract class Enum
     /** @var mixed|null  */
     protected $value;
 
+    protected static $labels = [];
+
     private static $meta = [];
 
     /**
@@ -36,7 +38,7 @@ abstract class Enum
      */
     public function __construct($value = null)
     {
-        self::boot();
+        self::bootClass();
 
         if (is_null($value)) {
             $value = static::__default;
@@ -65,6 +67,21 @@ abstract class Enum
     }
 
     /**
+     * Returns the label (string to be displayed on UI) of a value
+     *
+     * @return string
+     */
+    public function label()
+    {
+        $result = $this->value;
+        if (isset(static::$labels[$result])) {
+            $result = static::$labels[$result];
+        }
+
+        return (string) $result;
+    }
+
+    /**
      * Checks if two enums are equal. Value and class are both matched.
      * Value check is not type strict.
      *
@@ -79,6 +96,14 @@ abstract class Enum
         }
 
         return $this->value() == $object->value();
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->label();
     }
 
     /**
@@ -134,7 +159,7 @@ abstract class Enum
      */
     public static function consts()
     {
-        self::boot();
+        self::bootClass();
 
         return array_keys(self::$meta[static::class]);
     }
@@ -158,19 +183,42 @@ abstract class Enum
      */
     public static function values()
     {
-        self::boot();
+        self::bootClass();
 
         return array_values(self::$meta[static::class]);
     }
 
     /**
+     * Returns the array of labels
+     *
+     * @return array
+     */
+    public static function labels()
+    {
+        self::bootClass();
+
+        $result = [];
+
+        foreach (static::values() as $value) {
+            $result[] = isset(static::$labels[$value]) ? (string) static::$labels[$value] : (string) $value;
+        }
+
+        return $result;
+    }
+
+    /**
      * Initializes the constants array for the class if necessary
      */
-    private static function boot()
+    private static function bootClass()
     {
         if (!array_key_exists(static::class, self::$meta)) {
             self::$meta[static::class] = (new \ReflectionClass(static::class))->getConstants();
             unset(self::$meta[static::class]['__default']);
+
+            if (method_exists(static::class, 'boot')) {
+                static::boot();
+            }
+
         }
     }
 

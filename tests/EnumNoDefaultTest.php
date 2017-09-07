@@ -66,16 +66,19 @@ class EnumNoDefaultTest extends TestCase
         $this->assertNull($arr['__default']);
     }
 
+    /**
+     * @test
+     */
     public function testGetValue()
     {
         $foo = SampleFooBarNoDefault::FOO();
-        $this->assertEquals('foo', $foo->getValue());
+        $this->assertEquals('foo', $foo->value());
 
         $bar = SampleFooBarNoDefault::BAR();
-        $this->assertEquals('bar', $bar->getValue());
+        $this->assertEquals('bar', $bar->value());
 
         $foobar = new SampleFooBarNoDefault();
-        $this->assertNull($foobar->getValue());
+        $this->assertNull($foobar->value());
     }
 
 }

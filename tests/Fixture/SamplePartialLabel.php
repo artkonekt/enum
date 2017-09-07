@@ -1,8 +1,8 @@
 <?php
 /**
- * Contains the SampleDisplayText class.
+ * Contains the SamplePartialLabel class.
  *
- * @copyright   Copyright (c) 2016 Storm Storez Srl-D
+ * @copyright   Copyright (c) 2016-2017 Attila Fulop
  * @author      Attila Fulop
  * @license     MIT
  * @since       2016-07-06
@@ -15,16 +15,15 @@ namespace Konekt\Enum\Tests\Fixture;
 
 use Konekt\Enum\Enum;
 
-class SampleDisplayText extends Enum
+class SamplePartialLabel extends Enum
 {
     const FOO   = 'foo';
     const BAR   = 'bar';
     const BAZ   = 'baz';
 
-    protected static $displayTexts = [
-        self::BAR   => 'Bar Text',
+    protected static $labels = [
         self::FOO   => 'Foo Text',
-        self::BAZ   => 'Baz Text'
+        self::BAR   => 'Bar Text'
     ];
 
 }
