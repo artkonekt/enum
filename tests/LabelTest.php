@@ -12,8 +12,15 @@
 
 namespace Konekt\Enum\Tests;
 
+use Konekt\Enum\Tests\Fixture\NullableEnum;
+use Konekt\Enum\Tests\Fixture\Sample123;
+use Konekt\Enum\Tests\Fixture\Sample123WithDutchLabels;
+use Konekt\Enum\Tests\Fixture\Sample123WithGermanLabels;
+use Konekt\Enum\Tests\Fixture\SampleFooBarNoDefault;
 use Konekt\Enum\Tests\Fixture\SampleLabelViaBootMethod;
 use Konekt\Enum\Tests\Fixture\SampleNoLabel;
+use Konekt\Enum\Tests\Fixture\SampleOneTwoThree;
+use Konekt\Enum\Tests\Fixture\SampleOneTwoThreeWithLabels;
 use Konekt\Enum\Tests\Fixture\SamplePartialLabel;
 use Konekt\Enum\Tests\Fixture\SampleWithLabel;
 use PHPUnit\Framework\TestCase;
@@ -41,6 +48,17 @@ class LabelTest extends TestCase
     /**
      * @test
      */
+    public function label_always_returns_string()
+    {
+        $one = Sample123::ONE();
+
+        $this->assertEquals('1', $one->label());
+        $this->assertInternalType('string', $one->label());
+    }
+
+    /**
+     * @test
+     */
     public function label_returns_value_if_no_label_was_set()
     {
         $foo = SampleNoLabel::FOO();
@@ -54,7 +72,6 @@ class LabelTest extends TestCase
 
         $baz2 = new SampleNoLabel(SampleNoLabel::BAZ);
         $this->assertEquals(SampleNoLabel::BAZ, $baz2->label());
-
     }
 
     /**
@@ -120,7 +137,43 @@ class LabelTest extends TestCase
         $zdish = new SampleLabelViaBootMethod();
         $this->assertEquals(SampleLabelViaBootMethod::__default, $zdish->label());
         $this->assertEquals(SampleLabelViaBootMethod::__default, (string)$zdish);
+    }
 
+    /**
+     * @test
+     */
+    public function labels_of_same_values_are_distinct_across_various_classes()
+    {
+        $oneA = Sample123::ONE();
+        $oneB = SampleOneTwoThree::ONE();
+        $oneC = Sample123WithGermanLabels::ONE();
+        $oneD = Sample123WithDutchLabels::ONE();
+        $oneE = SampleOneTwoThreeWithLabels::ONE();
+
+        $this->assertEquals('1', $oneA->label());
+        $this->assertEquals('one', $oneB->label());
+        $this->assertEquals('ein', $oneC->label());
+        $this->assertEquals('een', $oneD->label());
+        $this->assertEquals('One', $oneE->label());
+    }
+
+    /**
+     * @test
+     */
+    public function labels_of_same_values_are_distinct_across_various_classes_when_are_set_via_boot_method()
+    {
+        $this->assertEquals('Foo is good', SampleLabelViaBootMethod::FOO()->label());
+        $this->assertEquals('foo', SampleFooBarNoDefault::FOO()->label());
+    }
+
+    /**
+     * @test
+     */
+    public function label_is_empty_string_if_value_is_null()
+    {
+        $unknown = NullableEnum::UNKNOWN();
+
+        $this->assertEquals('', $unknown->label());
     }
 
 }

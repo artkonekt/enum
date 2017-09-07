@@ -25,8 +25,6 @@ abstract class Enum
     /** @var mixed|null  */
     protected $value;
 
-    protected static $labels = [];
-
     private static $meta = [];
 
     /**
@@ -73,12 +71,7 @@ abstract class Enum
      */
     public function label()
     {
-        $result = $this->value;
-        if (isset(static::$labels[$result])) {
-            $result = static::$labels[$result];
-        }
-
-        return (string) $result;
+        return static::getLabel($this->value);
     }
 
     /**
@@ -200,10 +193,59 @@ abstract class Enum
         $result = [];
 
         foreach (static::values() as $value) {
-            $result[] = isset(static::$labels[$value]) ? (string) static::$labels[$value] : (string) $value;
+            $result[] = static::getLabel($value);
         }
 
         return $result;
+    }
+
+    /**
+     * Returns an array of value => label pairs.
+     * Ready to pass to dropdowns.
+     *
+     * Example:
+     *      ```
+     *          const FOO = 'foo';
+     *          const BAR = 'bar'
+     *
+     *          protected static $labels = [
+     *              self::FOO => 'I am foo',
+     *              self::BAR => 'I am bar'
+     *          ];
+     *      ```
+     *      self::choices returns:
+     *      ```
+     *          [
+     *              'foo' => 'I am foo',
+     *              'bar' => 'I am bar'
+     *          ]
+     *      ```
+     *
+     * @return array
+     */
+    public static function choices()
+    {
+        self::bootClass();
+
+        $result = [];
+
+        foreach (static::values() as $value) {
+            $result[$value] = static::getLabel($value);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Returns an associative array with const names as key and their corresponding values as value
+     *
+     * @return array
+     */
+    public static function toArray()
+    {
+        self::bootClass();
+
+        return self::$meta[static::class];
     }
 
     /**
@@ -241,6 +283,34 @@ abstract class Enum
         }
 
         return false;
+    }
+
+    /**
+     * Returns whether the labels property is defined on the actual class
+     *
+     * @return bool
+     */
+    private static function hasLabels()
+    {
+        return property_exists(static::class, 'labels');
+    }
+
+    /**
+     * Returns the label for a given value.
+     *
+     * !!Make sure it only gets called after bootClass()!!
+     *
+     * @param $value
+     *
+     * @return string
+     */
+    private static function getLabel($value)
+    {
+        if (static::hasLabels() && isset(static::$labels[$value])) {
+            return (string) static::$labels[$value];
+        }
+
+        return (string) $value;
     }
 
 

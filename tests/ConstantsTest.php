@@ -50,4 +50,23 @@ class ConstantsTest extends TestCase
         $this->assertTrue(SampleOneTwoThree::hasConst('ONE'));
     }
 
+
+    /**
+     * @test
+     */
+    public function has_const_doesnt_mess_up_with_values()
+    {
+        $this->assertTrue(SampleOneTwoThree::hasConst('ONE'));
+        $this->assertFalse(SampleOneTwoThree::hasConst('one'));
+
+        $this->assertTrue(SampleOneTwoThree::hasConst('TWO'));
+        $this->assertFalse(SampleOneTwoThree::hasConst('two'));
+
+        $this->assertTrue(SampleOneTwoThree::hasConst('THREE'));
+        $this->assertFalse(SampleOneTwoThree::hasConst('three'));
+
+        $this->assertFalse(SampleOneTwoThree::hasConst('FIVE'));
+        $this->assertFalse(SampleOneTwoThree::hasConst('SIX'));
+    }
+
 }

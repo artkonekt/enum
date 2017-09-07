@@ -23,6 +23,8 @@ class SampleLabelViaBootMethod extends Enum
     const BAZ       = 'baz';
     const ZSH       = 'zsh';
 
+    protected static $labels = [];
+
     protected static function boot()
     {
         static::$labels = [

@@ -1,8 +1,8 @@
 <?php
 /**
- * Contains the BasicTest class.
+ * Contains the AbcSmokeTest class.
  *
- * @copyright   Copyright (c) 2016 Attila Fulop
+ * @copyright   Copyright (c) 2016-2017 Attila Fulop
  * @author      Attila Fulop
  * @license     MIT
  * @since       2016-05-30
@@ -15,7 +15,7 @@ namespace Konekt\Enum\Tests;
 use PHPUnit\Framework\TestCase;
 
 
-class BasicTest extends TestCase
+class AbcSmokeTest extends TestCase
 {
     const MIN_PHP_VERSION = '7.0.0';
 

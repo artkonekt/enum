@@ -13,8 +13,10 @@
 namespace Konekt\Enum\Tests;
 
 
+use Konekt\Enum\Tests\Fixture\Sample123;
 use Konekt\Enum\Tests\Fixture\SampleLabelViaBootMethod;
 use Konekt\Enum\Tests\Fixture\SampleNoLabel;
+use Konekt\Enum\Tests\Fixture\SampleOneTwoThree;
 use Konekt\Enum\Tests\Fixture\SamplePartialLabel;
 use Konekt\Enum\Tests\Fixture\SampleWithLabel;
 use PHPUnit\Framework\TestCase;
@@ -82,6 +84,31 @@ class StringCastingTest extends TestCase
         // Test empty value
         $fooBarBaz = new SampleLabelViaBootMethod();
         $this->assertEquals($fooBarBaz->label(), (string)$fooBarBaz);
+    }
+
+    /**
+     * @test
+     */
+    public function it_returns_the_value_when_no_label_was_set()
+    {
+        $this->assertEquals('one', (string) SampleOneTwoThree::ONE());
+        $this->assertEquals('two', (string) SampleOneTwoThree::TWO());
+
+        $three = new SampleOneTwoThree(SampleOneTwoThree::THREE);
+        $this->assertEquals('three', (string) $three);
+    }
+
+    /**
+     * @test
+     */
+    public function numeric_values_are_converted_to_string_dooh()
+    {
+        $this->assertEquals('1', (string) Sample123::ONE());
+        $this->assertEquals('2', (string) Sample123::TWO());
+
+        $three = new Sample123(Sample123::THREE);
+        $this->assertEquals('3', (string) $three);
+        $this->assertNotEquals('33', (string) $three);
     }
 
 }

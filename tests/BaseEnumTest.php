@@ -15,6 +15,7 @@ namespace Konekt\Enum\Tests;
 
 use Konekt\Enum\Enum;
 use Konekt\Enum\Tests\Fixture\Sample123;
+use Konekt\Enum\Tests\Fixture\SampleOneTwoThree;
 use PHPUnit\Framework\TestCase;
 
 class BaseEnumTest extends TestCase
@@ -47,6 +48,16 @@ class BaseEnumTest extends TestCase
         $enum = Sample123::create();
 
         $this->assertEquals(Sample123::__default, $enum->value());
+
+        $def = new SampleOneTwoThree();
+
+        $this->assertEquals(SampleOneTwoThree::__default, $def->value());
+        $this->assertEquals('one', $def->value());
+
+        $defn = new Sample123();
+
+        $this->assertEquals(Sample123::__default, $defn->value());
+        $this->assertEquals(1, $defn->value());
     }
 
     /**
@@ -132,6 +143,46 @@ class BaseEnumTest extends TestCase
     {
         $this->assertInternalType('integer', Sample123::create("2")->value());
         $this->assertInternalType('integer', Sample123::create(2)->value());
+    }
+
+    /**
+     * @test
+     */
+    public function has_doesnt_mess_up_values_with_const_names()
+    {
+        $one = new SampleOneTwoThree();
+
+        $this->assertTrue($one->has('one'));
+        $this->assertFalse($one->has('ONE'));
+
+        $this->assertTrue($one->has('two'));
+        $this->assertFalse($one->has('TWO'));
+
+        $this->assertFalse($one->has('four'));
+    }
+
+    /**
+     * @test
+     */
+    public function has_method_can_be_invoked_both_statically_and_on_instance()
+    {
+        $this->assertTrue(SampleOneTwoThree::has('one'));
+        $this->assertFalse(SampleOneTwoThree::has('ONE'));
+
+        $this->assertTrue(SampleOneTwoThree::has('two'));
+        $this->assertTrue(SampleOneTwoThree::has('three'));
+
+        $this->assertFalse(SampleOneTwoThree::has('four'));
+
+        $one = SampleOneTwoThree::create();
+
+        $this->assertTrue($one->has('one'));
+        $this->assertFalse($one->has('ONE'));
+
+        $this->assertTrue($one->has('two'));
+        $this->assertFalse($one->has('TWO'));
+
+        $this->assertFalse($one->has('four'));
     }
 
 }

@@ -26,8 +26,12 @@ Install it via composer:
 composer require konekt/enum
 ```
 
+> **!!! The master branch contains v2.0 which hasn't been released yet, so for production stick with v1.2 for the time being**
+
 
 #### Example Of Usage
+
+> **!!! The doc below is for v1.2** (to be updated in a couple of days)
 
 ```php
 namespace App\Order;
