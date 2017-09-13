@@ -5,9 +5,11 @@
 ### Unreleased
 
 - Rewritten from scratch
-- API has changed completely, with clarity as primary scope
+- API has [changed](UPGRADE-2.0.md#renamed-methods) completely, with clarity as primary scope
 - Minimum PHP version is 7.0
 - Strict mode removed
+- `equals()` does type check
+- For more details refer to [UPGRADE-2.0.md](UPGRADE-2.0.md)
 
 ###### 2017-09-06
 

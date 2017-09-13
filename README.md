@@ -26,19 +26,11 @@ Install it via composer:
 composer require konekt/enum
 ```
 
-> **!!! The master branch contains v2.0 which hasn't been released yet, so for production stick with v1.2 for the time being**
+### How To Use
 
-
-#### Example Of Usage
-
-> **!!! The doc below is for v1.2** (to be updated in a couple of days)
 
 ```php
-namespace App\Order;
-
-use Konekt\Enum\Enum;
-
-final class Status extends Enum
+class Status extends \Konekt\Enum\Enum
 {
     const __default      = self::PLACED;
 
@@ -46,18 +38,34 @@ final class Status extends Enum
     const CONFIRMED      = 'confirmed';
     const PROCESSING     = 'processing';
     const COMPLETED      = 'completed';
-    
-    /** @var array Display texts are optional and are available beginning from version 1.1 */
-    protected static $displayTexts = [
-        self::PLACED     => 'Placed',
-        self::CONFIRMED  => 'Confirmed',
-        self::PROCESSING => 'Processing',
-        self::COMPLETED  => 'Completed'    
-    ];
 }
 ```
 
-Model classes can use it as a standalone type, internally mapping to whatever the original type is:
+**Creating Instances:**
+
+```php
+// With plain constructor:
+$placed = new Status('placed');
+// or
+$placed = new Status(Status::PLACED);
+
+// With factory method:
+$confirmed  = Status::create(Status::CONFIRMED);
+$processing = Status::create('processing');
+
+// With magic constructor (use const name as method):
+$completed = Status::COMPLETED();
+
+// Setting a __default:
+$placed = new Status();
+echo $placed->value();
+// outputs: 'placed'
+
+```
+
+Instances are immutable.
+
+Other classes can use it as a standalone type, internally mapping to whatever the original type is:
 
 ```php
 namespace App\Order;
@@ -79,7 +87,7 @@ class Order
     
     public function setStatus(Status $status)
     {
-        $this->status = $status->getValue();    
+        $this->status = $status->value();    
     }
 
 }
@@ -121,33 +129,45 @@ class OrderController
 }
 ```
 
-#### Display Texts
+#### Labels
 
-As of version 1.1 you can optionally set display texts for enum values.
-You can define them either by a static array or with a callback method (v1.2).
+You can optionally set labels (display texts) for enum values.
+You can define them via a static array `$labels` on your concrete enum class.
+
+If it's necessary to set the labels via runtime a function (eg. translate with `__()`) then it can be done within a custom `boot()` method.
 
 ##### Via Static Array
 
 This is protected static array containing enum values as keys and user friendly texts a values:
 
 ```php
-/** @var array Display texts are optional and are available beginning from version 1.1 */
-    protected static $displayTexts = [
+class OrderStatus extends \Konekt\Enum\Enum
+{
+    const __default      = self::PLACED;
+
+    const PLACED         = 'placed';
+    const CONFIRMED      = 'confirmed';
+    const PROCESSING     = 'processing';
+    const COMPLETED      = 'completed';
+    
+    /** @var array Labels are optional */
+    protected static $labels = [
         self::PLACED     => 'Placed',
         self::CONFIRMED  => 'Confirmed',
         self::PROCESSING => 'Processing',
         self::COMPLETED  => 'Completed'    
     ];
+}
 ```
 
-##### Via Callback Method
+##### Within The Boot Method
 
-In case your concrete Enum class contains a protected method called `fetchDisplayText($value)` then it is used for fetching the display text. This can be useful if the display text needs to be dynamic, eg. translatable.
+This can be useful if the label text needs to be set during runtime.
 
 *Example: returning translated display text with gettext:*
 
 ```php
-final class OffsitePaymentMethod extends Enum
+final class OffsitePaymentMethod extends \Konekt\Enum\Enum
 {
     const __default = self::WIRE_TRANSFER;
 
@@ -156,63 +176,49 @@ final class OffsitePaymentMethod extends Enum
     const POS               = 'pos';
     const CASH_ON_DELIVERY  = 'cash_on_delivery';
     
-    /**
-     * Returns the display text translated to the current locale (using gettext)
-     * This way source tools like poEdit can properly identify the strings for translation files 
-     */
-    protected function fetchDisplayText($value)
-    {
-        switch ($value) {
-            case self::WIRE_TRANSFER:
-                return __('Wire Transfer');
-                break;
-            case self::CASH:
-                return __('Cash');
-                break;
-            case self::POS:
-                return __('Pos terminal');
-                break;
-            case self::CASH_ON_DELIVERY:
-                return __('Cash on delivery');
-                break;
-            default:
-                return __('Actually this won\'t happen due to the __default');
+    // $labels static property needs to be defined
+    public static $labels = [];
+    
+    protected static function boot()
+        {
+            static::$labels = [
+                self::WIRE_TRANSFER     => __('Wire Transfer'),
+                self::CASH              => __('Cash'),
+                self::POS               => __('Pos terminal'),
+                self::CASH_ON_DELIVERY  => __('Cash on delivery')
+            ];
         }
-    }
 }
 ```
 
-You can use two methods for utilizing display texts `choices()` _(static)_ and `getDisplayText()` for an object instance.
+You can use two methods for utilizing display texts `choices()` _(static)_ and `label()` for an object instance.
 
-The `getDisplayText()` method returns the display text for a specific instance value. If it is not set via the `$displayTexts` property, defaults to the enum value:
+The `label()` method returns the label for a specific instance value. If no label was set via the `$label` property, defaults to the enum value:
 
 ```php
-final class BarType extends Enum
+final class BarType extends \Konekt\Enum\Enum
 {
     const CREATED        = 'created';
     const ACTIVE         = 'active';
     const CLOSED         = 'closed';
     
-    /** @var array Display texts are optional and are available beginning from version 1.1 */
-    protected static $displayTexts = [
+    protected static $labels = [
         self::CREATED    => 'New Bar',
         self::ACTIVE     => 'Ongoing Bar'  
     ];
 }
 
 $created = BarType::CREATED();
-echo $created->getDisplayText();
+echo $created->label();
 //outputs: 'New Bar'
 
 $active = BarType::ACTIVE();
-echo $active->getDisplayText();
+echo $active->label();
 //outputs: 'Ongoing Bar'
 
 $closed = BarType::CLOSED();
-echo $closed->getDisplayText();
-//outputs: 'closed' -> fallback to enum value since no displayText was set 
-
-
+echo $closed->label();
+//outputs: 'closed' -> fallback to enum value since no label was set
 ```
 
 The `choices()` method returns all the available choices along with their display texts. Useful for selects/dropdowns:
@@ -224,8 +230,7 @@ final class BarType extends Enum
     const ACTIVE         = 'active';
     const CLOSED         = 'closed';
     
-    /** @var array Display texts are optional and are available beginning from version 1.1 */
-    protected static $displayTexts = [
+    protected static $labels = [
         self::CREATED    => 'New Bar',
         self::ACTIVE     => 'Ongoing Bar'  
     ];
@@ -254,7 +259,7 @@ $completed = Status::COMPLETED();
 echo $completed;
 //outputs: 'Completed'
 
-echo $completed->getValue();
+echo $completed->value();
 //outputs: 'completed'
 
 
@@ -265,7 +270,7 @@ $confirmed = new Status(Status::CONFIRMED);
 echo $confirmed;
 //output: 'Confirmed'
 
-echo $confirmed->getValue();
+echo $confirmed->value();
 //output: 'confirmed'
 
 
@@ -278,7 +283,7 @@ echo $status;
 //due to having a __default value set and magic __toString() method
 
 
-echo $status->getValue();
+echo $status->value();
 //output: 'placed'
 
 print_r($status->toArray());
@@ -301,17 +306,6 @@ print_r(Status::toArray());
 //      [COMPLETED] => completed
 //  )
 
-print_r(Status::toArray(true));
-//outputs the default value as well:
-//Array
-//  (
-//      [__default] => placed
-//      [PLACED] => placed
-//      [CONFIRMED] => confirmed
-//      [PROCESSING] => processing
-//      [COMPLETED] => completed
-//  )
-
 print_r(Status::choices());
 //Array
 //(
@@ -321,16 +315,16 @@ print_r(Status::choices());
 //    [completed]  => 'Completed'
 //)
 
-echo Status::hasKey('PLACED') ? 'yes' : 'no';
+echo Status::hasConst('PLACED') ? 'yes' : 'no';
 //output: 'yes'
 
-echo Status::hasKey('placed') ? 'yes' : 'no';
+echo Status::hasConst('placed') ? 'yes' : 'no';
 //output: 'no'
 
-echo Status::hasValue('PLACED') ? 'yes' : 'no';
+echo Status::has('PLACED') ? 'yes' : 'no';
 //output: 'no'
 
-echo Status::hasValue('placed') ? 'yes' : 'no';
+echo Status::has('placed') ? 'yes' : 'no';
 //output: 'yes'
 
 //Using the equals() comparison
@@ -347,9 +341,4 @@ $placed2 = new Status(Status::PLACED);
 echo $placed->equals($placed2) ? 'yes' : 'no';
 //output: 'yes'
 
-
 ```
-
-Original credits to Marian Suflaj, http://www.php4every1.com/scripts/php-enum/ *(it's not live anymore as of 2016-05-30)*
-
-Inspirations have also been taken from: https://github.com/myclabs/php-enum
