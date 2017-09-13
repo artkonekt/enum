@@ -2,7 +2,8 @@
 
 ## 2.0
 
-### Unreleased
+### 2.0.0
+###### 2017-09-13
 
 - Rewritten from scratch
 - API has [changed](UPGRADE-2.0.md#renamed-methods) completely, with clarity as primary scope
