@@ -249,6 +249,17 @@ abstract class Enum
     }
 
     /**
+     * Clears static class metadata. Mainly useful in testing environemnts.
+     * Next time the enum class gets used, the class will be rebooted
+     */
+    public static function reset()
+    {
+        if (array_key_exists(static::class, self::$meta)) {
+            unset(self::$meta[static::class]);
+        }
+    }
+
+    /**
      * Initializes the constants array for the class if necessary
      */
     private static function bootClass()
@@ -306,6 +317,8 @@ abstract class Enum
      */
     private static function getLabel($value)
     {
+        self::bootClass();
+
         if (static::hasLabels() && isset(static::$labels[$value])) {
             return (string) static::$labels[$value];
         }
