@@ -2,6 +2,11 @@
 
 ## 2.0
 
+### 2.0.2
+###### 2017-09-26
+
+- `defaultValue()` static method has been added
+
 ### 2.0.1
 ###### 2017-09-14
 
