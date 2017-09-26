@@ -13,6 +13,7 @@
 namespace Konekt\Enum\Tests;
 
 use Konekt\Enum\Tests\Fixture\NullableEnum;
+use Konekt\Enum\Tests\Fixture\NullableWithLabels;
 use Konekt\Enum\Tests\Fixture\Sample123;
 use Konekt\Enum\Tests\Fixture\Sample1234;
 use Konekt\Enum\Tests\Fixture\Sample12345With5AsDefault;
@@ -53,6 +54,7 @@ class DefaultTest extends TestCase
     public function default_method_works_on_nullable_enums_as_well()
     {
         $this->assertNull(NullableEnum::defaultValue());
+        $this->assertNull(NullableWithLabels::defaultValue());
     }
 
     /**

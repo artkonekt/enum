@@ -13,6 +13,7 @@
 namespace Konekt\Enum\Tests;
 
 use Konekt\Enum\Tests\Fixture\NullableEnum;
+use Konekt\Enum\Tests\Fixture\NullableWithLabels;
 use Konekt\Enum\Tests\Fixture\Sample123;
 use Konekt\Enum\Tests\Fixture\Sample123WithDutchLabels;
 use Konekt\Enum\Tests\Fixture\Sample123WithGermanLabels;
@@ -174,6 +175,16 @@ class LabelTest extends TestCase
         $unknown = NullableEnum::UNKNOWN();
 
         $this->assertEquals('', $unknown->label());
+    }
+
+    /**
+     * @test
+     */
+    public function label_can_be_returned_for_legitimate_null_values_as_well()
+    {
+        $undefined = NullableWithLabels::UNDEFINED();
+
+        $this->assertEquals('Undefined', $undefined->label());
     }
 
 }
