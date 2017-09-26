@@ -122,6 +122,14 @@ abstract class Enum
     }
 
     /**
+     * Returns the default value of the class. Equals to the __default constant.
+     */
+    public static function default()
+    {
+        return static::__default;
+    }
+
+    /**
      * Factory method for creating instance
      *
      * @param mixed|null $value  The value for the instance
