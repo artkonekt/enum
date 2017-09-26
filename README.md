@@ -60,7 +60,6 @@ $completed = Status::COMPLETED();
 $placed = new Status();
 echo $placed->value();
 // outputs: 'placed'
-
 ```
 
 Instances are immutable.
@@ -91,7 +90,6 @@ class Order
     }
 
 }
-
 ```
 
 From the client code perspective
@@ -219,6 +217,12 @@ echo $active->label();
 $closed = BarType::CLOSED();
 echo $closed->label();
 //outputs: 'closed' -> fallback to enum value since no label was set
+
+BarType::create();
+// Throws exception since the class doesn't have a __default const set
+
+var_dump(BarType::defaultValue());
+//output: NULL since BarType has no default
 ```
 
 The `choices()` method returns all the available choices along with their display texts. Useful for selects/dropdowns:
@@ -285,6 +289,9 @@ echo $status;
 
 echo $status->value();
 //output: 'placed'
+
+echo Status::defaultValue();
+//output 'placed'
 
 print_r($status->toArray());
 //output:

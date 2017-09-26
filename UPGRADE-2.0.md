@@ -51,3 +51,5 @@ var_dump($unknown->value());
 - `labels()`: returns the labels (with fallback to values if no label defined). Elements are always strings.
 - `consts()`: returns the const names in an array.
 - `create($value)`: factory method for creating an instance with value
+- `reset()`: Clears static class metadata
+- `defaultValue()`: static method to return the value of the class (__default const or null if unset)

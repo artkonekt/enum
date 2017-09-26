@@ -124,7 +124,7 @@ abstract class Enum
     /**
      * Returns the default value of the class. Equals to the __default constant.
      */
-    public static function default()
+    public static function defaultValue()
     {
         return static::__default;
     }
