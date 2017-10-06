@@ -4,6 +4,7 @@
 [![Build Status](https://travis-ci.org/artkonekt/enum.svg?branch=master)](https://travis-ci.org/artkonekt/enum)
 [![Latest Stable Version](https://poser.pugx.org/konekt/enum/version.svg)](https://packagist.org/packages/konekt/enum)
 [![Total Downloads](https://poser.pugx.org/konekt/enum/downloads.svg)](https://packagist.org/packages/konekt/enum)
+[![StyleCI](https://styleci.io/repos/60036504/shield?branch=master)](https://styleci.io/repos/60036504)
 [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
 
 ## PHP Enum Class
