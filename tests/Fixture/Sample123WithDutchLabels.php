@@ -12,7 +12,6 @@
 
 namespace Konekt\Enum\Tests\Fixture;
 
-
 class Sample123WithDutchLabels extends Sample123
 {
     protected static $labels = [
@@ -20,5 +19,4 @@ class Sample123WithDutchLabels extends Sample123
         self::TWO   => 'twee',
         self::THREE => 'drie'
     ];
-
 }

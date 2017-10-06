@@ -12,7 +12,6 @@
 
 namespace Konekt\Enum\Tests;
 
-
 use Konekt\Enum\Tests\Fixture\NullableEnum;
 use Konekt\Enum\Tests\Fixture\Sample123;
 use Konekt\Enum\Tests\Fixture\SampleOneTwoThree;
@@ -58,5 +57,4 @@ class ToArrayTest extends TestCase
         $this->assertCount(count(SampleOneTwoThreeWithLabels::values()), SampleOneTwoThreeWithLabels::toArray());
         $this->assertCount(count(NullableEnum::values()), NullableEnum::toArray());
     }
-
 }

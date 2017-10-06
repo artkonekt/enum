@@ -12,7 +12,6 @@
 
 namespace Konekt\Enum\Tests\Fixture;
 
-
 use Konekt\Enum\Enum;
 
 class SecondsAsLabelEnum extends Enum
@@ -29,5 +28,4 @@ class SecondsAsLabelEnum extends Enum
             self::CURRENT_SECOND => date('s') // Current second is the label. Weird huh?
         ];
     }
-
 }

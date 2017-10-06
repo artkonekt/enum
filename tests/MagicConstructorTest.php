@@ -12,7 +12,6 @@
 
 namespace Konekt\Enum\Tests;
 
-
 use Konekt\Enum\Tests\Fixture\Sample123;
 use Konekt\Enum\Tests\Fixture\SampleOneTwoThree;
 use PHPUnit\Framework\TestCase;
@@ -58,5 +57,4 @@ class MagicConstructorTest extends TestCase
 
         SampleOneTwoThree::FOUR();
     }
-
 }

@@ -12,7 +12,6 @@
 
 namespace Konekt\Enum\Tests\Fixture;
 
-
 use Konekt\Enum\Enum;
 
 class SamplePartialLabel extends Enum
@@ -25,5 +24,4 @@ class SamplePartialLabel extends Enum
         self::FOO   => 'Foo Text',
         self::BAR   => 'Bar Text'
     ];
-
 }

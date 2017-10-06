@@ -186,5 +186,4 @@ class LabelTest extends TestCase
 
         $this->assertEquals('Undefined', $undefined->label());
     }
-
 }

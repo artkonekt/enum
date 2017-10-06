@@ -63,5 +63,4 @@ class NoDefaultTest extends TestCase
 
         new SampleFooBarNoDefault();
     }
-
 }

@@ -12,7 +12,6 @@
 
 namespace Konekt\Enum\Tests\Fixture;
 
-
 use Konekt\Enum\Enum;
 
 class NullableEnum extends Enum
@@ -20,5 +19,4 @@ class NullableEnum extends Enum
     const UNKNOWN     = null;
     const INITIALIZED = 1;
     const COMPLETED   = 2;
-
 }

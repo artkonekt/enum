@@ -12,7 +12,6 @@
 
 namespace Konekt\Enum\Tests;
 
-
 use Konekt\Enum\Tests\Fixture\SecondsAsLabelEnum;
 use PHPUnit\Framework\TestCase;
 
@@ -24,7 +23,7 @@ class ResetTest extends TestCase
     public function reset_method_resets_class_metadata()
     {
         $second = SecondsAsLabelEnum::create();
-        $label = $second->label();
+        $label  = $second->label();
 
         sleep(1);
         // Labels are set at boot() time
@@ -35,5 +34,4 @@ class ResetTest extends TestCase
         sleep(1);
         $this->assertNotEquals($label, $second->label());
     }
-
 }

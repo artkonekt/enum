@@ -12,7 +12,6 @@
 
 namespace Konekt\Enum\Tests\Fixture;
 
-
 use Konekt\Enum\Enum;
 
 class NullableWithLabels extends Enum
@@ -30,5 +29,4 @@ class NullableWithLabels extends Enum
         self::PROGRESS  => 'In progress',
         self::DONE      => 'Done',
     ];
-
 }

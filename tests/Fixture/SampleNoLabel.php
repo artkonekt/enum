@@ -12,7 +12,6 @@
 
 namespace Konekt\Enum\Tests\Fixture;
 
-
 use Konekt\Enum\Enum;
 
 class SampleNoLabel extends Enum
@@ -20,5 +19,4 @@ class SampleNoLabel extends Enum
     const FOO   = 'fool';
     const BAR   = 'bars';
     const BAZ   = 'bazzez';
-
 }

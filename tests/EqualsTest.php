@@ -12,7 +12,6 @@
 
 namespace Konekt\Enum\Tests;
 
-
 use Konekt\Enum\Tests\Fixture\Another123;
 use Konekt\Enum\Tests\Fixture\Sample123;
 use Konekt\Enum\Tests\Fixture\Sample1234;
@@ -27,7 +26,7 @@ class EqualsTest extends TestCase
      */
     public function equals_returns_true_for_same_values_of_same_type()
     {
-        $two = Sample123::create(2);
+        $two  = Sample123::create(2);
         $zwei = Sample123::create(2);
 
         $this->assertTrue($two->equals($zwei));
@@ -69,5 +68,4 @@ class EqualsTest extends TestCase
         $this->assertTrue($threeA->equals($threeB));
         $this->assertTrue($threeB->equals($threeA));
     }
-
 }

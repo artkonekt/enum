@@ -12,7 +12,6 @@
 
 namespace Konekt\Enum\Tests\Fixture;
 
-
 use Konekt\Enum\Enum;
 
 class SampleLabelViaBootMethod extends Enum
@@ -33,5 +32,4 @@ class SampleLabelViaBootMethod extends Enum
             self::BAZ => 'Baz is best'
         ];
     }
-
 }

@@ -115,6 +115,4 @@ class ChoicesTest extends TestCase
         $this->assertEquals('Bar is better', $choices[SampleLabelViaBootMethod::BAR]);
         $this->assertEquals('Baz is best', $choices[SampleLabelViaBootMethod::BAZ]);
     }
-
-
 }

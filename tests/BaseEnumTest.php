@@ -12,7 +12,6 @@
 
 namespace Konekt\Enum\Tests;
 
-
 use Konekt\Enum\Enum;
 use Konekt\Enum\Tests\Fixture\Sample123;
 use Konekt\Enum\Tests\Fixture\SampleOneTwoThree;
@@ -184,5 +183,4 @@ class BaseEnumTest extends TestCase
 
         $this->assertFalse($one->has('four'));
     }
-
 }

@@ -66,5 +66,4 @@ class DefaultTest extends TestCase
         $this->assertEquals(Sample12345With5AsDefault::FIVE, Sample12345With5AsDefault::defaultValue());
         $this->assertEquals(5, Sample12345With5AsDefault::defaultValue());
     }
-
 }
