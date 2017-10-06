@@ -1,16 +1,15 @@
 <?php
 /**
- * Contains the Enum Class
+ * Contains the Enum Class.
  *
  * @copyright   Copyright (c) 2013-2017 Attila Fulop
  * @author      Attila Fulop
  * @license     MIT
+ *
  * @since       2013-09-23
  */
 
-
 namespace Konekt\Enum;
-
 
 /**
  * Abstract class that enables creation of PHP enums.
@@ -22,17 +21,17 @@ abstract class Enum
     /** Constant with default value for creating enum object */
     const __default = null;
 
-    /** @var mixed|null  */
+    /** @var mixed|null */
     protected $value;
 
     private static $meta = [];
 
     /**
-     * Class constructor
+     * Class constructor.
      *
-     * @param   mixed    $value     Any defined value
+     * @param mixed $value Any defined value
      *
-     * @throws  \UnexpectedValueException   If value is not valid enum value
+     * @throws \UnexpectedValueException If value is not valid enum value
      */
     public function __construct($value = null)
     {
@@ -44,7 +43,7 @@ abstract class Enum
 
         if (!static::has($value)) {
             throw new \UnexpectedValueException(
-                sprintf("Given value (%s) is not in enum `%s`",
+                sprintf('Given value (%s) is not in enum `%s`',
                     $value, static::class
                 )
             );
@@ -55,7 +54,7 @@ abstract class Enum
     }
 
     /**
-     * Returns the value of the enum instance
+     * Returns the value of the enum instance.
      *
      * @return mixed
      */
@@ -65,7 +64,7 @@ abstract class Enum
     }
 
     /**
-     * Returns the label (string to be displayed on UI) of a value
+     * Returns the label (string to be displayed on UI) of a value.
      *
      * @return string
      */
@@ -78,13 +77,13 @@ abstract class Enum
      * Checks if two enums are equal. Value and class are both matched.
      * Value check is not type strict.
      *
-     * @param   mixed    $object
+     * @param mixed $object
      *
-     * @return  bool     True if enums are equal
+     * @return bool True if enums are equal
      */
     public function equals($object)
     {
-        if ( ! ($object instanceof Enum) || ! self::compatibles(get_class($object), static::class)) {
+        if (!($object instanceof self) || !self::compatibles(get_class($object), static::class)) {
             return false;
         }
 
@@ -100,22 +99,23 @@ abstract class Enum
     }
 
     /**
-     * Magic constructor to be used like: FancyEnum::SHINY_VALUE() where the method name is a const of the class
+     * Magic constructor to be used like: FancyEnum::SHINY_VALUE() where the method name is a const of the class.
      *
      * @param string $name
      * @param array  $arguments
      *
-     * @return static
      * @throws \BadMethodCallException
+     *
+     * @return static
      */
     public static function __callStatic($name, $arguments)
     {
         if (self::hasConst($name)) {
-            return new static(constant(static::class . '::' . $name));
+            return new static(constant(static::class.'::'.$name));
         }
 
         throw new \BadMethodCallException(
-            sprintf("No such value (`%s`) or static method in this class %s",
+            sprintf('No such value (`%s`) or static method in this class %s',
                 $name, static::class
             )
         );
@@ -130,9 +130,9 @@ abstract class Enum
     }
 
     /**
-     * Factory method for creating instance
+     * Factory method for creating instance.
      *
-     * @param mixed|null $value  The value for the instance
+     * @param mixed|null $value The value for the instance
      *
      * @return static
      */
@@ -142,9 +142,9 @@ abstract class Enum
     }
 
     /**
-     * Returns whether a const is present in the specific enum class
+     * Returns whether a const is present in the specific enum class.
      *
-     * @param   string  $const
+     * @param string $const
      *
      * @return bool
      */
@@ -154,7 +154,7 @@ abstract class Enum
     }
 
     /**
-     * Returns the consts (except for __default) of the class
+     * Returns the consts (except for __default) of the class.
      *
      * @return array
      */
@@ -166,7 +166,7 @@ abstract class Enum
     }
 
     /**
-     * Returns whether the enum contains the given value
+     * Returns whether the enum contains the given value.
      *
      * @param mixed $value
      *
@@ -178,7 +178,7 @@ abstract class Enum
     }
 
     /**
-     * Returns the array of values
+     * Returns the array of values.
      *
      * @return array
      */
@@ -190,7 +190,7 @@ abstract class Enum
     }
 
     /**
-     * Returns the array of labels
+     * Returns the array of labels.
      *
      * @return array
      */
@@ -245,7 +245,7 @@ abstract class Enum
     }
 
     /**
-     * Returns an associative array with const names as key and their corresponding values as value
+     * Returns an associative array with const names as key and their corresponding values as value.
      *
      * @return array
      */
@@ -258,7 +258,7 @@ abstract class Enum
 
     /**
      * Clears static class metadata. Mainly useful in testing environemnts.
-     * Next time the enum class gets used, the class will be rebooted
+     * Next time the enum class gets used, the class will be rebooted.
      */
     public static function reset()
     {
@@ -268,7 +268,7 @@ abstract class Enum
     }
 
     /**
-     * Initializes the constants array for the class if necessary
+     * Initializes the constants array for the class if necessary.
      */
     private static function bootClass()
     {
@@ -279,15 +279,14 @@ abstract class Enum
             if (method_exists(static::class, 'boot')) {
                 static::boot();
             }
-
         }
     }
 
     /**
-     * Returns whether two enum classes are compatible (are the same type or one descends from the other)
+     * Returns whether two enum classes are compatible (are the same type or one descends from the other).
      *
-     * @param string    $class1
-     * @param string    $class2
+     * @param string $class1
+     * @param string $class2
      *
      * @return bool
      */
@@ -305,7 +304,7 @@ abstract class Enum
     }
 
     /**
-     * Returns whether the labels property is defined on the actual class
+     * Returns whether the labels property is defined on the actual class.
      *
      * @return bool
      */
@@ -333,6 +332,4 @@ abstract class Enum
 
         return (string) $value;
     }
-
-
 }

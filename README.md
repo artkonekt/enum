@@ -1,9 +1,9 @@
 # Konekt Enum
 
 
-[![Build Status](https://travis-ci.org/artkonekt/enum.png?branch=master)](https://travis-ci.org/artkonekt/enum)
-[![Latest Stable Version](https://poser.pugx.org/konekt/enum/version.png)](https://packagist.org/packages/konekt/enum)
-[![Total Downloads](https://poser.pugx.org/konekt/enum/downloads.png)](https://packagist.org/packages/konekt/enum)
+[![Build Status](https://travis-ci.org/artkonekt/enum.svg?branch=master)](https://travis-ci.org/artkonekt/enum)
+[![Latest Stable Version](https://poser.pugx.org/konekt/enum/version.svg)](https://packagist.org/packages/konekt/enum)
+[![Total Downloads](https://poser.pugx.org/konekt/enum/downloads.svg)](https://packagist.org/packages/konekt/enum)
 [![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
 
 ## PHP Enum Class
