@@ -12,7 +12,6 @@
 
 namespace Konekt\Enum\Tests;
 
-
 use Konekt\Enum\Tests\Fixture\Sample123;
 use Konekt\Enum\Tests\Fixture\SampleLabelViaBootMethod;
 use Konekt\Enum\Tests\Fixture\SampleNoLabel;
@@ -110,5 +109,4 @@ class StringCastingTest extends TestCase
         $this->assertEquals('3', (string) $three);
         $this->assertNotEquals('33', (string) $three);
     }
-
 }

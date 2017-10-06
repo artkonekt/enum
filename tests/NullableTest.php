@@ -12,7 +12,6 @@
 
 namespace Konekt\Enum\Tests;
 
-
 use Konekt\Enum\Enum;
 use Konekt\Enum\Tests\Fixture\NullableEnum;
 use PHPUnit\Framework\TestCase;
@@ -137,5 +136,4 @@ class NullableTest extends TestCase
         $this->assertInternalType('int', $array['INITIALIZED']);
         $this->assertInternalType('int', $array['COMPLETED']);
     }
-
 }

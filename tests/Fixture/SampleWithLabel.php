@@ -12,7 +12,6 @@
 
 namespace Konekt\Enum\Tests\Fixture;
 
-
 use Konekt\Enum\Enum;
 
 class SampleWithLabel extends Enum
@@ -26,5 +25,4 @@ class SampleWithLabel extends Enum
         self::FOO   => 'Foo Text',
         self::BAZ   => 'Baz Text'
     ];
-
 }
