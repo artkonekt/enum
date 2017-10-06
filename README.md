@@ -18,6 +18,8 @@ There is also a __default constant that enables you to create an object without 
 
 [Changelog](Changelog.md)
 
+> For **Laravel Eloquent** integration proceed to [konekt/enum-eloquent](https://github.com/artkonekt/enum-eloquent)
+
 ### Installation
 
 Install it via composer:
