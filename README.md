@@ -1,11 +1,11 @@
 # Konekt Enum
 
 
-[![Build Status](https://travis-ci.org/artkonekt/enum.svg?branch=master)](https://travis-ci.org/artkonekt/enum)
-[![Latest Stable Version](https://poser.pugx.org/konekt/enum/version.svg)](https://packagist.org/packages/konekt/enum)
-[![Total Downloads](https://poser.pugx.org/konekt/enum/downloads.svg)](https://packagist.org/packages/konekt/enum)
+[![Travis Build Status](https://img.shields.io/travis/artkonekt/enum.svg?style=flat-square)](https://travis-ci.org/artkonekt/enum)
+[![Packagist version](https://img.shields.io/packagist/v/konekt/enum.svg?style=flat-square)](https://packagist.org/packages/konekt/enum)
+[![Packagist downloads](https://img.shields.io/packagist/dt/konekt/enum.svg?style=flat-square)](https://packagist.org/packages/konekt/enum)
 [![StyleCI](https://styleci.io/repos/60036504/shield?branch=master)](https://styleci.io/repos/60036504)
-[![Open Source Love](https://badges.frapsoft.com/os/mit/mit.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
+[![MIT Software License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE.md)
 
 ## PHP Enum Class
 
