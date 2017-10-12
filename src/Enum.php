@@ -98,6 +98,18 @@ abstract class Enum
         return $this->label();
     }
 
+    public function __get($name)
+    {
+        if (strpos($name, 'is_') === 0 && strlen($name) > 3) {
+            $constName = strtoupper(substr($name, 3));
+            if (static::hasConst($constName)) {
+                return $this->equals(static::{$constName}());
+            }
+        }
+
+        trigger_error('Undefined property: ' . static::class . '::' . $name);
+    }
+
     /**
      * Magic constructor to be used like: FancyEnum::SHINY_VALUE() where the method name is a const of the class.
      *
