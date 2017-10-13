@@ -98,16 +98,46 @@ abstract class Enum
         return $this->label();
     }
 
+    /**
+     * Magic property getter. If the property is in format `is_const_name` it checks
+     * if the enum instance equals to the value of the constant of the const_name
+     * from the property name. If $name doesn't match, a PHP notice is emitted
+     *
+     * @param $name
+     *
+     * @return bool
+     */
     public function __get($name)
     {
         if (strpos($name, 'is_') === 0 && strlen($name) > 3) {
-            $constName = strtoupper(substr($name, 3));
-            if (static::hasConst($constName)) {
-                return $this->equals(static::{$constName}());
+            $constName = self::strToConstName(substr($name, 3));
+            if (self::hasConst($constName)) {
+                return $this->equalsByConstName($constName);
             }
         }
 
         trigger_error('Undefined property: ' . static::class . '::' . $name);
+    }
+
+    /**
+     * @param string $name
+     * @param array  $arguments
+     *
+     * @return bool
+     */
+    public function __call(string $name, array $arguments)
+    {
+        if (strpos($name, 'is') === 0 && strlen($name) > 2 && ctype_upper($name[2])) {
+            $constName = self::strToConstName(substr($name, 2));
+            if (self::hasConst($constName)) {
+                return $this->equalsByConstName($constName);
+            }
+        }
+
+        trigger_error(
+            sprintf('Call to undefined method: %s::%s()', static::class, $name),
+            E_WARNING
+        );
     }
 
     /**
@@ -280,6 +310,23 @@ abstract class Enum
     }
 
     /**
+     * Returns whether the enum instance equals with a value of the same
+     * type created from the given const name
+     *
+     * @param string $const
+     *
+     * @return bool
+     */
+    private function equalsByConstName($const)
+    {
+        return $this->equals(
+            static::create(
+                constant(static::class . '::' . $const)
+            )
+        );
+    }
+
+    /**
      * Initializes the constants array for the class if necessary.
      */
     private static function bootClass()
@@ -343,5 +390,15 @@ abstract class Enum
         }
 
         return (string) $value;
+    }
+
+    private static function strToConstName($str)
+    {
+        if ( ! ctype_lower($str)) {
+            $str = preg_replace('/\s+/u', '', ucwords($str));
+            $str = strtolower(preg_replace('/(.)(?=[A-Z])/u', '$1' . '_', $str));
+        }
+
+        return strtoupper($str);
     }
 }
