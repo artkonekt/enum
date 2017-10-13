@@ -12,7 +12,6 @@
 
 namespace Konekt\Enum\Tests;
 
-
 use Konekt\Enum\Tests\Fixture\ConstsWithUnderscores;
 use Konekt\Enum\Tests\Fixture\NullableEnum;
 use Konekt\Enum\Tests\Fixture\SampleOneTwoThree;

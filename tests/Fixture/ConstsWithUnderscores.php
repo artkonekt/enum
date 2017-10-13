@@ -12,7 +12,6 @@
 
 namespace Konekt\Enum\Tests\Fixture;
 
-
 use Konekt\Enum\Enum;
 
 class ConstsWithUnderscores extends Enum
@@ -21,5 +20,4 @@ class ConstsWithUnderscores extends Enum
 
     const WENT_FISHING = 'went fishing';
     const AT_HOME      = '@home';
-
 }
