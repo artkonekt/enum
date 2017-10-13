@@ -3,7 +3,7 @@
 ## 2.1
 
 ### 2.1.0
-###### Unreleased
+###### 2017-10-13 (Friday 🎃)
 
 - Magic [checker properties and methods](docs/compare.md) have been added
 - Proper [documentation](https://artkonekt.github.io/enum) has been created (extracted from readme + extended)
