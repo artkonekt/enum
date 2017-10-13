@@ -10,6 +10,8 @@ Labels are optional.
 
 Labels can be defined via the static `$labels` property on the concrete enum class.
 
+!> Be aware that the **`$labels` property MUST BE DECLARED AS STATIC** otherwise it won't work.
+
 It has to be an array containing enum values as keys and user friendly texts a values:
 
 ```php

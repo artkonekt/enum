@@ -50,7 +50,7 @@ For more details refer to the [Using Factory Method in Creating Enums](create.md
 
 ### `defaultValue()`
 
-Returns the default value of the class. Equals to the __default constant.
+Returns the default value of the class. Equals to the `__default` constant.
 
 ### `has()`
 
@@ -161,6 +161,18 @@ var_dump(FooBar::toArray());
 
 ## Instance Methods
 
+### `equals()`
+
+Checks if two enums are equal. Value and class are both matched. Value check is not type strict.
+
+For detailed description read the [Comparing Enums](compare.md) section.
+
+### `label()`
+
+Returns the label (string to be displayed on UI) of an instance. It returns the value if no label was set.
+
+For more details see the [Labels](labels.md) section.
+
 ### `value()`
 
 Returns the value of the enum instance.
@@ -182,18 +194,6 @@ $z = Progress::ZERO();
 var_dump($z->value());
 // int(0)
 ```
-
-### `label()`
-
-Returns the label (string to be displayed on UI) of an instance. It returns the value if no label was set.
-
-For more details see the [Labels](labels.md) section.
-
-### `equals()`
-
-Checks if two enums are equal. Value and class are both matched. Value check is not type strict.
-
-For detailed description read the [Comparing Enums](compare.md) section.
 
 ### `__toString()`
 

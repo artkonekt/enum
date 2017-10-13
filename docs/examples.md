@@ -2,7 +2,9 @@
 
 ## As Value Object
 
-Other classes can use it as a standalone type, internally mapping to whatever the original type is:
+Other classes can enums as value objects, internally mapping them to whatever the original type is.
+
+**Enum Class Example:**
 
 ```php
 namespace App\Order;
@@ -17,6 +19,8 @@ class Status extends \Konekt\Enum\Enum
     const COMPLETED      = 'completed';
 }
 ```
+
+**Using As Value Object:**
 
 ```php
 namespace App\Order;
@@ -44,7 +48,7 @@ class Order
 }
 ```
 
-From the client code perspective
+**From the client code perspective:**
 
 ```php
 
@@ -171,4 +175,20 @@ $placed2 = new Status(Status::PLACED);
 echo $placed->equals($placed2) ? 'yes' : 'no';
 //output: 'yes'
 
+// Magic checker/comparison
+
+$status = Status::CONFIRMED();
+var_dump($status->isConfirmed());
+// bool(true)
+var_dump($status->is_confirmed);
+// bool(true)
+
+var_dump($status->isPlaced());
+// bool(false)
+var_dump($status->is_placed);
+// bool(false)
 ```
+
+---
+
+Congrats, you've reached the end of this doc! 🎉

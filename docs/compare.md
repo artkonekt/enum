@@ -1,6 +1,6 @@
 # Comparing Enums
 
-## The Equals Function
+## The `equals()` Method
 
 Comparing two enums can be done with the `equals()` method:
 
@@ -96,13 +96,13 @@ class Location extends \Konekt\Enum\Enum
 
 $location = new Location(Location::AT_HOME);
 
-// Via magic property:
+// using magic property:
 var_dump($location->is_at_home);
 // bool(true)
 var_dump($location->is_at_fishing);
 // bool(false)
 
-// Vi magic method:
+// using magic method:
 var_dump($location->isAtHome());
 // bool(true)
 var_dump($location->isAtFishing());
@@ -116,7 +116,7 @@ The magic checker **property format** is: `is_const_name` ie:
 
 _Examples:_
 ```
-const ONE = 1           =>> is_one
+const ONE = 1           ==> is_one
 const LUCKY_LUKE = 'll' ==> is_lucky_luke
 ```
 
@@ -127,7 +127,7 @@ The magic checker **method format** is: `isConstName()` ie:
 
 _Examples:_
 ```
-const ONE = 1           =>> isOne()
+const ONE = 1           ==> isOne()
 const LUCKY_LUKE = 'll' ==> isLuckyLuke()
 ```
 
