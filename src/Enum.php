@@ -64,7 +64,8 @@ abstract class Enum
     }
 
     /**
-     * Returns the label (string to be displayed on UI) of a value.
+     * Returns the label (string to be displayed on UI) of an instance.
+     * It returns the value if no label was set.
      *
      * @return string
      */
@@ -299,7 +300,7 @@ abstract class Enum
     }
 
     /**
-     * Clears static class metadata. Mainly useful in testing environemnts.
+     * Clears static class metadata. Mainly useful in testing environments.
      * Next time the enum class gets used, the class will be rebooted.
      */
     public static function reset()

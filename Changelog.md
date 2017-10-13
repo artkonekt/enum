@@ -1,5 +1,13 @@
 # Konekt Enum Changelog
 
+## 2.1
+
+### 2.1.0
+###### Unreleased
+
+- Magic [checker properties and methods](docs/compare.md) have been added
+- Proper [documentation](https://artkonekt.github.io/enum) has been created (extracted from readme + extended)
+
 ## 2.0
 
 ### 2.0.2
