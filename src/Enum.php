@@ -2,7 +2,7 @@
 /**
  * Contains the Enum Class.
  *
- * @copyright   Copyright (c) 2013-2017 Attila Fulop
+ * @copyright   Copyright (c) 2013-2018 Attila Fulop
  * @author      Attila Fulop
  * @license     MIT
  *
@@ -137,7 +137,7 @@ abstract class Enum
 
         trigger_error(
             sprintf('Call to undefined method: %s::%s()', static::class, $name),
-            E_WARNING
+            E_USER_WARNING
         );
     }
 

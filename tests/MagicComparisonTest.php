@@ -74,7 +74,7 @@ class MagicComparisonTest extends TestCase
     /**
      * @test
      */
-    public function checking_equality_with_method_against_nonexistent_const_throws_a_notice()
+    public function checking_equality_with_method_against_nonexistent_const_throws_a_warning()
     {
         $this->expectException(Warning::class);
 
