@@ -2,6 +2,13 @@
 
 ## 2.1
 
+### 2.1.1
+###### 2018-06-09
+
+- Minor fix: triggering the proper `E_USER_WARNING` error on unknown method call.
+- Documentation improved: jump to top when changing page
+- Broader PHPUnit support, testing with php 7.2 as well on travis
+
 ### 2.1.0
 ###### 2017-10-13 (Friday 🎃)
 
