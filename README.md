@@ -2,15 +2,19 @@
 
 [![Travis Build Status](https://img.shields.io/travis/artkonekt/enum.svg?style=flat-square)](https://travis-ci.org/artkonekt/enum)
 [![Packagist Stable Version](https://img.shields.io/packagist/v/konekt/enum.svg?style=flat-square&label=stable)](https://packagist.org/packages/konekt/enum)
-[![Packagist Dev Version](https://img.shields.io/packagist/vpre/konekt/enum.svg?style=flat-square&label=dev)](https://packagist.org/packages/konekt/enum)
 [![Packagist downloads](https://img.shields.io/packagist/dt/konekt/enum.svg?style=flat-square)](https://packagist.org/packages/konekt/enum)
 [![StyleCI](https://styleci.io/repos/60036504/shield?branch=master)](https://styleci.io/repos/60036504)
 [![MIT Software License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE.md)
 
 ## PHP Enum Class
 
-Konekt Enum is an abstract class that enables creation of PHP enums.
-All you have to do is extend this class and define some constants.
+> Enums are handy when a variable (especially a method parameter) can only take one out of a small set of possible values.
+
+Konekt Enum is a lightweight abstract class that enables creation of PHP enums.
+
+### Usage
+
+Extend the base class and define constants on it:
 
 ##### Example
 
@@ -29,7 +33,7 @@ var $queen = new ChessPiece('queen');
 
 ## Installation
 
-using composer: `composer require konekt/enum`.
+using composer: `composer require konekt/enum`
 
 ## Documentation
 
