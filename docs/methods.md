@@ -173,6 +173,12 @@ Returns the label (string to be displayed on UI) of an instance. It returns the 
 
 For more details see the [Labels](labels.md) section.
 
+### `notEquals()`
+
+Checks if two enums are NOT equal. The opposite of equals.
+
+For detailed description read the [Comparing Enums](compare.md) section.
+
 ### `value()`
 
 Returns the value of the enum instance.

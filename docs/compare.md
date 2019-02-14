@@ -31,6 +31,16 @@ var_dump(
 // bool(true)
 ```
 
+Many developers prefer to avoid using negative conditions in their code
+like:
+
+```php
+if (!$one->equals($two)) //...
+```
+
+thus the `notEquals()` method is available (since v2.2) for improved
+code readability. It's simply just the negation of `equals()`.
+
 ### Type Check
 
 The `equals()` method does a type check so two different types of the same value won't be equal:

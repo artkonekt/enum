@@ -1,5 +1,12 @@
 # Konekt Enum Changelog
 
+## 2.2
+
+### Unreleased
+
+- The `notEquals()` comparison method has been added.
+- Tested with PHP 7.3 (has been working with earlier versions as well)
+
 ## 2.1
 
 ### 2.1.1

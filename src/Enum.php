@@ -2,10 +2,9 @@
 /**
  * Contains the Enum Class.
  *
- * @copyright   Copyright (c) 2013-2018 Attila Fulop
+ * @copyright   Copyright (c) 2013-2019 Attila Fulop
  * @author      Attila Fulop
  * @license     MIT
- *
  * @since       2013-09-23
  */
 
@@ -89,6 +88,19 @@ abstract class Enum
         }
 
         return $this->value() == $object->value();
+    }
+
+    /**
+     * Checks if two enums are NOT equal. Value and class are both matched.
+     * Value check is not type strict.
+     *
+     * @param mixed $object
+     *
+     * @return bool True if enums do not equal
+     */
+    public function notEquals($object)
+    {
+        return !$this->equals($object);
     }
 
     /**
