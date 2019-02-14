@@ -2,7 +2,8 @@
 
 ## 2.2
 
-### Unreleased
+### 2.2.0
+###### 2019-02-14
 
 - The `notEquals()` comparison method has been added.
 - Tested with PHP 7.3 (has been working with earlier versions as well)
