@@ -28,8 +28,8 @@ class DefaultTest extends TestCase
      */
     public function default_method_returns_the_value_of_the_default_const()
     {
-        $this->assertEquals(Sample123::__default, Sample123::defaultValue());
-        $this->assertEquals(SampleOneTwoThree::__default, SampleOneTwoThree::defaultValue());
+        $this->assertEquals(Sample123::__DEFAULT, Sample123::defaultValue());
+        $this->assertEquals(SampleOneTwoThree::__DEFAULT, SampleOneTwoThree::defaultValue());
     }
 
     /**
@@ -45,7 +45,7 @@ class DefaultTest extends TestCase
      */
     public function default_method_works_on_extended_enum_classes_as_well()
     {
-        $this->assertEquals(Sample1234::__default, Sample1234::defaultValue());
+        $this->assertEquals(Sample1234::__DEFAULT, Sample1234::defaultValue());
     }
 
     /**
@@ -62,7 +62,7 @@ class DefaultTest extends TestCase
      */
     public function default_method_returns_correct_value_when_default_was_changed_in_a_subclass()
     {
-        $this->assertEquals(Sample12345With5AsDefault::__default, Sample12345With5AsDefault::defaultValue());
+        $this->assertEquals(Sample12345With5AsDefault::__DEFAULT, Sample12345With5AsDefault::defaultValue());
         $this->assertEquals(Sample12345With5AsDefault::FIVE, Sample12345With5AsDefault::defaultValue());
         $this->assertEquals(5, Sample12345With5AsDefault::defaultValue());
     }

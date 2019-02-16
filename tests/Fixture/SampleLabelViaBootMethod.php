@@ -16,7 +16,7 @@ use Konekt\Enum\Enum;
 
 class SampleLabelViaBootMethod extends Enum
 {
-    const __default = self::ZSH;
+    const __DEFAULT = self::ZSH;
     const FOO       = 'foo';
     const BAR       = 'bar';
     const BAZ       = 'baz';

@@ -44,7 +44,7 @@ class ToArrayTest extends TestCase
      */
     public function to_array_doesnt_return_the_default_key()
     {
-        $this->assertArrayNotHasKey('__default', SampleOneTwoThree::toArray());
+        $this->assertArrayNotHasKey('__DEFAULT', SampleOneTwoThree::toArray());
     }
 
     /**

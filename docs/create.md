@@ -7,7 +7,7 @@ An enum type is a class that extends the base Enum class and defines a set of co
 ```php
 class Status extends \Konekt\Enum\Enum
 {
-    const __default      = self::PLACED;
+    const __DEFAULT      = self::PLACED;
 
     const PLACED         = 'placed';
     const CONFIRMED      = 'confirmed';

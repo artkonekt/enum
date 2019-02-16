@@ -17,7 +17,7 @@ It has to be an array containing enum values as keys and user friendly texts a v
 ```php
 class OrderStatus extends \Konekt\Enum\Enum
 {
-    const __default      = self::PLACED;
+    const __DEFAULT      = self::PLACED;
 
     const PLACED         = 'placed';
     const CONFIRMED      = 'confirmed';
@@ -48,7 +48,7 @@ If it's necessary to set the labels runtime with some function (eg. translate wi
 ```php
 final class OffsitePaymentMethod extends \Konekt\Enum\Enum
 {
-    const __default = self::WIRE_TRANSFER;
+    const __DEFAULT = self::WIRE_TRANSFER;
 
     const WIRE_TRANSFER     = 'wire_transfer';
     const CASH              = 'cash';

@@ -16,7 +16,7 @@ use Konekt\Enum\Enum;
 
 class NullableWithLabels extends Enum
 {
-    const __default   = self::UNDEFINED;
+    const __DEFAULT   = self::UNDEFINED;
 
     const UNDEFINED = null;
     const OPEN      = 'open';

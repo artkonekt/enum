@@ -9,7 +9,7 @@ This can be done by explicitly defining a constant that has a null value:
 ```php
 class Gender extends \Konekt\Enum\Enum
 {
-    const __default = self::UNKNOWN;
+    const __DEFAULT = self::UNKNOWN;
     
     const UNKNOWN = null;
     const MALE    = 'm';

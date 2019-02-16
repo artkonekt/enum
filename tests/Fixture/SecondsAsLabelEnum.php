@@ -16,7 +16,7 @@ use Konekt\Enum\Enum;
 
 class SecondsAsLabelEnum extends Enum
 {
-    const __default = self::CURRENT_SECOND;
+    const __DEFAULT = self::CURRENT_SECOND;
 
     const CURRENT_SECOND = 'current_second';
 

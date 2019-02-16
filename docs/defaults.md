@@ -2,12 +2,12 @@
 
 ## Specifying Default Value
 
-It is possible to define a default value on Enum classes, by setting the value of the `__default` constant:
+It is possible to define a default value on Enum classes, by setting the value of the `__DEFAULT` constant:
 
 ```php
 class MemberRank extends \Konekt\Enum\Enum
 {
-    const __default = self::NOVICE;
+    const __DEFAULT = self::NOVICE;
     
     const NOVICE  = 'novice';
     const SENIOR  = 'senior';
@@ -56,7 +56,7 @@ ChessColor::create();
 
 In case you need to obtain the default value of an Enum class, there are two ways to do so:
 
-- read the class's `__default` constant,
+- read the class's `__DEFAULT` constant,
 - use the static `defaultValue()` method.
 
 ```php
@@ -70,14 +70,14 @@ var_dump(FooBar::defaultValue());
 // NULL
 // since BarType has no default
 
-var_dump(FooBar::__default);
+var_dump(FooBar::__DEFAULT);
 // NULL
 ```
 
 ```php
 class SpoinkBaz extends \Konekt\Enum\Enum
 {
-    const __default = self::SPOINK;
+    const __DEFAULT = self::SPOINK;
     
     const SPOINK = 'spoink';
     const BAZ    = 'baz';
@@ -86,7 +86,7 @@ class SpoinkBaz extends \Konekt\Enum\Enum
 var_dump(SpoinkBaz::defaultValue());
 // string(6) "spoink"
 
-var_dump(SpoinkBaz::__default);
+var_dump(SpoinkBaz::__DEFAULT);
 // string(6) "spoink"
 ```
 ---

@@ -11,7 +11,7 @@ namespace App\Order;
 
 class Status extends \Konekt\Enum\Enum
 {
-    const __default      = self::PLACED;
+    const __DEFAULT      = self::PLACED;
 
     const PLACED         = 'placed';
     const CONFIRMED      = 'confirmed';
@@ -111,7 +111,7 @@ $status = new Status();
 
 echo $status;
 //output: 'Placed'
-//due to having a __default value set and magic __toString() method
+//due to having a __DEFAULT value set and magic __toString() method
 
 
 echo $status->value();

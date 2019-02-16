@@ -27,12 +27,12 @@ var_dump(FooBar::choices());
 
 ### `consts()`
 
-Returns the array of consts (except for __default) of the class.
+Returns the array of consts (except for __DEFAULT) of the class.
 
 ```php
 class FooBar extends \Konekt\Enum\Enum
 {
-    const __default = self::FOO;
+    const __DEFAULT = self::FOO;
     
     const FOO = 'foo';
     const BAR = 'bar';
@@ -50,7 +50,7 @@ For more details refer to the [Using Factory Method in Creating Enums](create.md
 
 ### `defaultValue()`
 
-Returns the default value of the class. Equals to the `__default` constant.
+Returns the default value of the class. Equals to the `__DEFAULT` constant.
 
 ### `has()`
 

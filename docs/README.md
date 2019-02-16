@@ -25,7 +25,7 @@ class Status extends \Konekt\Enum\Enum {
 
 Enum is an object with value from one of those constants (or from one of superclass if any).
 
-There is also a `__default` constant that enables you to create an object without passing enum value.
+There is also a `__DEFAULT` constant that enables you to create an object without passing enum value.
 
 > **Note**: It is an alternative implementation of the [SplEnum class](http://php.net/manual/en/class.splenum.php), as that is often not available on PHP installations.
 
