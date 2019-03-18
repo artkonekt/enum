@@ -1,31 +1,39 @@
 <!-- index.html -->
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="//unpkg.com/docsify/themes/vue.css">
-    <title>Konekt Enum Documentation</title>
-</head>
-<body>
-<div id="app">Loading documentation...</div>
-</body>
-<script>
-    window.$docsify = {
-        name: 'Konekt Enum',
-        auto2top: true,
-        loadSidebar: true
-    }
-</script>
-<script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
-<script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
-<script src="//unpkg.com/prismjs/components/prism-php.min.js"></script>
-<script src="//unpkg.com/prismjs/components/prism-php-extras.min.js"></script>
-<script src="//unpkg.com/prismjs/components/prism-json.min.js"></script>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="//unpkg.com/docsify/themes/vue.css">
+        <title>Konekt Enum Documentation</title>
+    </head>
+    <body>
+        <div id="app">Loading documentation...</div>
+    </body>
+    <script>
+        window.$docsify = {
+            nameLink: {
+                '/': 'Konekt Enum 3.x',
+                '/2.x/': 'Konekt Enum 2.x'
+            },
+            name: 'Konekt Enum',
+            auto2top: true,
+            loadSidebar: true,
+            coverpage: {
+                '/': 'README.md',
+                '/2.x/': 'README.md'
+            }
+        }
+    </script>
+    <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+    <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
+    <script src="//unpkg.com/prismjs/components/prism-php.min.js"></script>
+    <script src="//unpkg.com/prismjs/components/prism-php-extras.min.js"></script>
+    <script src="//unpkg.com/prismjs/components/prism-json.min.js"></script>
 
-<script>
-    if (typeof navigator.serviceWorker !== 'undefined') {
-        navigator.serviceWorker.register('sw.js')
-    }
-</script>
+    <script>
+        if (typeof navigator.serviceWorker !== 'undefined') {
+            navigator.serviceWorker.register('sw.js')
+        }
+    </script>
 
 </html>
