@@ -18,7 +18,7 @@ In order to be more straightforward, the following naming changes have been done
 ## Removed Features
 
 - strict comparison (`===`) has been removed (is always `==`)
-- `toArray()` never returns the '__DEFAULT' key.
+- `toArray()` never returns the '__default' key.
 
 ## Null Values Must Be Explicit
 
@@ -52,4 +52,4 @@ var_dump($unknown->value());
 - `consts()`: returns the const names in an array.
 - `create($value)`: factory method for creating an instance with value
 - `reset()`: Clears static class metadata
-- `defaultValue()`: static method to return the value of the class (__DEFAULT const or null if unset)
+- `defaultValue()`: static method to return the value of the class (__default const or null if unset)
