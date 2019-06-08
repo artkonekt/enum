@@ -16,7 +16,7 @@ use Konekt\Enum\Enum;
 
 class Another123 extends Enum
 {
-    const __default = self::ONE;
+    const __DEFAULT = self::ONE;
     
     const ONE       = 1;
     const TWO       = 2;

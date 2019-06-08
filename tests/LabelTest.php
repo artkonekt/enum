@@ -136,8 +136,8 @@ class LabelTest extends TestCase
 
         // Test empty value
         $zdish = new SampleLabelViaBootMethod();
-        $this->assertEquals(SampleLabelViaBootMethod::__default, $zdish->label());
-        $this->assertEquals(SampleLabelViaBootMethod::__default, (string)$zdish);
+        $this->assertEquals(SampleLabelViaBootMethod::__DEFAULT, $zdish->label());
+        $this->assertEquals(SampleLabelViaBootMethod::__DEFAULT, (string)$zdish);
     }
 
     /**

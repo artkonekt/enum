@@ -16,7 +16,7 @@ use Konekt\Enum\Enum;
 
 final class SampleStatus extends Enum
 {
-    const __default      = self::PLACED;
+    const __DEFAULT      = self::PLACED;
 
     const PLACED         = 'placed';
     const CONFIRMED      = 'confirmed';

@@ -46,16 +46,16 @@ class BaseEnumTest extends TestCase
     {
         $enum = Sample123::create();
 
-        $this->assertEquals(Sample123::__default, $enum->value());
+        $this->assertEquals(Sample123::__DEFAULT, $enum->value());
 
         $def = new SampleOneTwoThree();
 
-        $this->assertEquals(SampleOneTwoThree::__default, $def->value());
+        $this->assertEquals(SampleOneTwoThree::__DEFAULT, $def->value());
         $this->assertEquals('one', $def->value());
 
         $defn = new Sample123();
 
-        $this->assertEquals(Sample123::__default, $defn->value());
+        $this->assertEquals(Sample123::__DEFAULT, $defn->value());
         $this->assertEquals(1, $defn->value());
     }
 
