@@ -40,6 +40,7 @@ abstract class Enum
             $value = static::__DEFAULT;
         }
 
+        /** @todo Allow unknown values to fallback to default */
         if (!static::has($value)) {
             throw new \UnexpectedValueException(
                 sprintf('Given value (%s) is not in enum `%s`',
