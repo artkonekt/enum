@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Enum\Tests\Fixture;
 
 class Sample123WithGermanLabels extends Sample123

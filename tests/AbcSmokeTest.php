@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Enum\Tests;
 
 use PHPUnit\Framework\TestCase;

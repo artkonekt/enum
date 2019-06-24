@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Enum\Tests;
 
 use Konekt\Enum\Enum;
@@ -133,7 +132,7 @@ class NullableTest extends TestCase
         $this->assertEquals(1, $array['INITIALIZED']);
         $this->assertEquals(2, $array['COMPLETED']);
 
-        $this->assertInternalType('int', $array['INITIALIZED']);
-        $this->assertInternalType('int', $array['COMPLETED']);
+        $this->assertIsInt($array['INITIALIZED']);
+        $this->assertIsInt($array['COMPLETED']);
     }
 }

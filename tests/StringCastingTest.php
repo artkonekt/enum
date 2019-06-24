@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Enum\Tests;
 
 use Konekt\Enum\Tests\Fixture\Sample123;
@@ -28,42 +27,40 @@ class StringCastingTest extends TestCase
     public function casting_to_string_returns_the_label()
     {
         $foo = SampleWithLabel::FOO();
-        $this->assertEquals('Foo Text', (string)$foo);
+        $this->assertEquals('Foo Text', (string) $foo);
 
         $bar = SampleWithLabel::BAR();
-        $this->assertEquals('Bar Text', (string)$bar);
+        $this->assertEquals('Bar Text', (string) $bar);
 
         $baz = SampleWithLabel::BAZ();
-        $this->assertEquals('Baz Text', (string)$baz);
+        $this->assertEquals('Baz Text', (string) $baz);
 
         $baz2 = new SampleWithLabel(SampleWithLabel::BAZ);
-        $this->assertEquals('Baz Text', (string)$baz2);
-
+        $this->assertEquals('Baz Text', (string) $baz2);
 
         $foon = SampleNoLabel::FOO();
-        $this->assertEquals(SampleNoLabel::FOO, (string)$foon);
+        $this->assertEquals(SampleNoLabel::FOO, (string) $foon);
 
         $barn = SampleNoLabel::BAR();
-        $this->assertEquals(SampleNoLabel::BAR, (string)$barn);
+        $this->assertEquals(SampleNoLabel::BAR, (string) $barn);
 
         $bazn = SampleNoLabel::BAZ();
-        $this->assertEquals(SampleNoLabel::BAZ, (string)$bazn);
+        $this->assertEquals(SampleNoLabel::BAZ, (string) $bazn);
 
         $bazn2 = new SampleNoLabel(SampleNoLabel::BAZ);
-        $this->assertEquals(SampleNoLabel::BAZ, (string)$bazn2);
-
+        $this->assertEquals(SampleNoLabel::BAZ, (string) $bazn2);
 
         $foop = SamplePartialLabel::FOO();
-        $this->assertEquals('Foo Text', (string)$foop);
+        $this->assertEquals('Foo Text', (string) $foop);
 
         $barp = SamplePartialLabel::BAR();
-        $this->assertEquals('Bar Text', (string)$barp);
+        $this->assertEquals('Bar Text', (string) $barp);
 
         $bazp = SamplePartialLabel::BAZ();
-        $this->assertEquals(SamplePartialLabel::BAZ, (string)$bazp);
+        $this->assertEquals(SamplePartialLabel::BAZ, (string) $bazp);
 
         $bazp2 = new SamplePartialLabel(SamplePartialLabel::BAZ);
-        $this->assertEquals(SamplePartialLabel::BAZ, (string)$bazp2);
+        $this->assertEquals(SamplePartialLabel::BAZ, (string) $bazp2);
     }
 
     /**
@@ -72,17 +69,17 @@ class StringCastingTest extends TestCase
     public function casting_to_string_always_equals_to_the_label()
     {
         $foo = SampleLabelViaBootMethod::FOO();
-        $this->assertEquals($foo->label(), (string)$foo);
+        $this->assertEquals($foo->label(), (string) $foo);
 
         $bar = SampleLabelViaBootMethod::BAR();
-        $this->assertEquals($bar->label(), (string)$bar);
+        $this->assertEquals($bar->label(), (string) $bar);
 
         $baz = SampleLabelViaBootMethod::BAZ();
-        $this->assertEquals($baz->label(), (string)$baz);
+        $this->assertEquals($baz->label(), (string) $baz);
 
         // Test empty value
         $fooBarBaz = new SampleLabelViaBootMethod();
-        $this->assertEquals($fooBarBaz->label(), (string)$fooBarBaz);
+        $this->assertEquals($fooBarBaz->label(), (string) $fooBarBaz);
     }
 
     /**

@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Enum\Tests\Fixture;
 
 class Sample1234 extends Sample123

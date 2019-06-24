@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Enum\Tests\Fixture;
 
 use Konekt\Enum\Enum;
@@ -17,7 +16,7 @@ use Konekt\Enum\Enum;
 class Sample123 extends Enum
 {
     const __DEFAULT = self::ONE;
-    
+
     const ONE       = 1;
     const TWO       = 2;
     const THREE     = 3;

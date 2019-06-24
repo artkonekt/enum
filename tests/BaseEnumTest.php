@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Enum\Tests;
 
 use Konekt\Enum\Enum;
@@ -140,8 +139,8 @@ class BaseEnumTest extends TestCase
      */
     public function values_are_of_proper_type_independently_from_how_it_was_constructed()
     {
-        $this->assertInternalType('integer', Sample123::create("2")->value());
-        $this->assertInternalType('integer', Sample123::create(2)->value());
+        $this->assertIsInt(Sample123::create("2")->value());
+        $this->assertIsInt(Sample123::create(2)->value());
     }
 
     /**

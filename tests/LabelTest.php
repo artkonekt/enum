@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Enum\Tests;
 
 use Konekt\Enum\Tests\Fixture\NullableEnum;
@@ -54,7 +53,7 @@ class LabelTest extends TestCase
         $one = Sample123::ONE();
 
         $this->assertEquals('1', $one->label());
-        $this->assertInternalType('string', $one->label());
+        $this->assertIsString($one->label());
     }
 
     /**
@@ -124,20 +123,20 @@ class LabelTest extends TestCase
     {
         $foo = SampleLabelViaBootMethod::FOO();
         $this->assertEquals('Foo is good', $foo->label());
-        $this->assertEquals('Foo is good', (string)$foo);
+        $this->assertEquals('Foo is good', (string) $foo);
 
         $bar = SampleLabelViaBootMethod::BAR();
         $this->assertEquals('Bar is better', $bar->label());
-        $this->assertEquals('Bar is better', (string)$bar);
+        $this->assertEquals('Bar is better', (string) $bar);
 
         $baz = SampleLabelViaBootMethod::BAZ();
         $this->assertEquals('Baz is best', $baz->label());
-        $this->assertEquals('Baz is best', (string)$baz);
+        $this->assertEquals('Baz is best', (string) $baz);
 
         // Test empty value
         $zdish = new SampleLabelViaBootMethod();
         $this->assertEquals(SampleLabelViaBootMethod::__DEFAULT, $zdish->label());
-        $this->assertEquals(SampleLabelViaBootMethod::__DEFAULT, (string)$zdish);
+        $this->assertEquals(SampleLabelViaBootMethod::__DEFAULT, (string) $zdish);
     }
 
     /**

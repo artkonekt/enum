@@ -23,9 +23,9 @@ abstract class Enum
     /** @var mixed|null */
     protected $value;
 
-    private static $meta = [];
-
     protected static $unknownValuesFallbackToDefault = false;
+
+    private static $meta = [];
 
     /**
      * Class constructor.
@@ -57,6 +57,79 @@ abstract class Enum
 
         //trick below is needed to make sure the value of original type gets set
         $this->value = static::values()[array_search($value, static::values())];
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->label();
+    }
+
+    /**
+     * Magic property getter. If the property is in format `is_const_name` it checks
+     * if the enum instance equals to the value of the constant of the const_name
+     * from the property name. If $name doesn't match, a PHP notice is emitted
+     *
+     * @param $name
+     *
+     * @return bool
+     */
+    public function __get($name)
+    {
+        if (0 === strpos($name, 'is_') && strlen($name) > 3) {
+            $constName = self::strToConstName(substr($name, 3));
+            if (self::hasConst($constName)) {
+                return $this->equalsByConstName($constName);
+            }
+        }
+
+        trigger_error('Undefined property: ' . static::class . '::' . $name);
+    }
+
+    /**
+     * @param string $name
+     * @param array  $arguments
+     *
+     * @return bool
+     */
+    public function __call(string $name, array $arguments)
+    {
+        if (0 === strpos($name, 'is') && strlen($name) > 2 && ctype_upper($name[2])) {
+            $constName = self::strToConstName(substr($name, 2));
+            if (self::hasConst($constName)) {
+                return $this->equalsByConstName($constName);
+            }
+        }
+
+        trigger_error(
+            sprintf('Call to undefined method: %s::%s()', static::class, $name),
+            E_USER_WARNING
+        );
+    }
+
+    /**
+     * Magic constructor to be used like: FancyEnum::SHINY_VALUE() where the method name is a const of the class.
+     *
+     * @param string $name
+     * @param array  $arguments
+     *
+     * @throws \BadMethodCallException
+     *
+     * @return static
+     */
+    public static function __callStatic($name, $arguments)
+    {
+        if (self::hasConst($name)) {
+            return new static(constant(static::class . '::' . $name));
+        }
+
+        throw new \BadMethodCallException(
+            sprintf('No such value (`%s`) or static method in this class %s',
+                $name, static::class
+            )
+        );
     }
 
     /**
@@ -108,79 +181,6 @@ abstract class Enum
     public function notEquals($object)
     {
         return !$this->equals($object);
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->label();
-    }
-
-    /**
-     * Magic property getter. If the property is in format `is_const_name` it checks
-     * if the enum instance equals to the value of the constant of the const_name
-     * from the property name. If $name doesn't match, a PHP notice is emitted
-     *
-     * @param $name
-     *
-     * @return bool
-     */
-    public function __get($name)
-    {
-        if (strpos($name, 'is_') === 0 && strlen($name) > 3) {
-            $constName = self::strToConstName(substr($name, 3));
-            if (self::hasConst($constName)) {
-                return $this->equalsByConstName($constName);
-            }
-        }
-
-        trigger_error('Undefined property: ' . static::class . '::' . $name);
-    }
-
-    /**
-     * @param string $name
-     * @param array  $arguments
-     *
-     * @return bool
-     */
-    public function __call(string $name, array $arguments)
-    {
-        if (strpos($name, 'is') === 0 && strlen($name) > 2 && ctype_upper($name[2])) {
-            $constName = self::strToConstName(substr($name, 2));
-            if (self::hasConst($constName)) {
-                return $this->equalsByConstName($constName);
-            }
-        }
-
-        trigger_error(
-            sprintf('Call to undefined method: %s::%s()', static::class, $name),
-            E_USER_WARNING
-        );
-    }
-
-    /**
-     * Magic constructor to be used like: FancyEnum::SHINY_VALUE() where the method name is a const of the class.
-     *
-     * @param string $name
-     * @param array  $arguments
-     *
-     * @throws \BadMethodCallException
-     *
-     * @return static
-     */
-    public static function __callStatic($name, $arguments)
-    {
-        if (self::hasConst($name)) {
-            return new static(constant(static::class.'::'.$name));
-        }
-
-        throw new \BadMethodCallException(
-            sprintf('No such value (`%s`) or static method in this class %s',
-                $name, static::class
-            )
-        );
     }
 
     /**
