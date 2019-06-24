@@ -1,4 +1,18 @@
-# Upgrading To 2.0
+# Upgrading Older Versions
+
+# From v2 To v3
+
+The most important difference between 3.0 and 2.X versions:
+
+The `__default` const is now uppercase `__DEFAULT` in order to fully comply with the PSR-1
+standard.
+
+This is a **BC** so if you want to use version 3.0, you have to check your codebase for enums that
+have `__default` constants defined and rename them to `__DEFAULT`.
+
+If you don't want to do this, you can **safely keep using the 2.x versions**.
+
+# From v1 To v2
 
 ## Renamed Methods
 
@@ -31,7 +45,7 @@ class Progress extends \Konekt\Enum\Enum
 {
     const UNKNOWN     = null;
     const INITIALIZED = 1;
-    const COMPLETED   = 2;    
+    const COMPLETED   = 2;
 }
 ```
 
@@ -53,3 +67,5 @@ var_dump($unknown->value());
 - `create($value)`: factory method for creating an instance with value
 - `reset()`: Clears static class metadata
 - `defaultValue()`: static method to return the value of the class (__default const or null if unset)
+
+**Next**: [Creating Enums &raquo;](create.md)

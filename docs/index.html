@@ -11,17 +11,10 @@
     </body>
     <script>
         window.$docsify = {
-            nameLink: {
-                '/': 'Konekt Enum 3.x',
-                '/2.x/': 'Konekt Enum 2.x'
-            },
             name: 'Konekt Enum',
             auto2top: true,
             loadSidebar: true,
-            coverpage: {
-                '/': 'README.md',
-                '/2.x/': 'README.md'
-            }
+            coverpage: 'cover   .md',
         }
     </script>
     <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
@@ -29,11 +22,4 @@
     <script src="//unpkg.com/prismjs/components/prism-php.min.js"></script>
     <script src="//unpkg.com/prismjs/components/prism-php-extras.min.js"></script>
     <script src="//unpkg.com/prismjs/components/prism-json.min.js"></script>
-
-    <script>
-        if (typeof navigator.serviceWorker !== 'undefined') {
-            navigator.serviceWorker.register('sw.js')
-        }
-    </script>
-
 </html>

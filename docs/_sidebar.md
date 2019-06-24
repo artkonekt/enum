@@ -1,6 +1,7 @@
 - I. Introduction
     - [Overview](README.md)
     - [Installation](installation.md)
+    - [Upgrade](upgrade.md)
 
 - II. How To Use
     - [Creating Enums](create.md)

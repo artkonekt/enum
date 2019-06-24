@@ -37,9 +37,16 @@ using composer: `composer require konekt/enum`
 
 ## Documentation
 
-For detailed usage and examples go to the [Konekt Enum Documentation](https://artkonekt.github.io/enum) or refer to the markdown files in the `docs/` folder of this repo.
+For detailed usage and examples go to the
+[Konekt Enum Documentation](https://konekt.dev/enum) or refer to the
+markdown files in the `docs/` folder of this repo.
 
 For the list of changes read the [Changelog](Changelog.md).
+
+## Upgrade
+
+From 1.x -> 2.x see [Upgrade to 2.0](https://konekt.dev/enum/3.0/upgrade#from-v1-to-v2)
+From 2.x -> 3.x see [Upgrade to 3.0](https://konekt.dev/enum/3.0/upgrade#from-v2-to-v3)
 
 ## Laravel Eloquent Integration
 

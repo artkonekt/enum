@@ -1,5 +1,14 @@
 # Konekt Enum Changelog
 
+## 3.0
+
+### 3.0.0
+###### 2019-06-24
+
+- The `__default` const has been renamed to `__DEFAULT` for full PSR-1 compliance.
+- It is possible to set fallback to default for unknown values.
+- Rest of features are equivalent to v2.2.0.
+
 ## 2.2
 
 ### 2.2.0
