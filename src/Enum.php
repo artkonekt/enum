@@ -25,6 +25,8 @@ abstract class Enum
 
     private static $meta = [];
 
+    protected static $unknownValuesFallbackToDefault = false;
+
     /**
      * Class constructor.
      *
@@ -42,11 +44,15 @@ abstract class Enum
 
         /** @todo Allow unknown values to fallback to default */
         if (!static::has($value)) {
-            throw new \UnexpectedValueException(
-                sprintf('Given value (%s) is not in enum `%s`',
-                    $value, static::class
-                )
-            );
+            if (static::$unknownValuesFallbackToDefault) {
+                $value = static::__DEFAULT;
+            } else {
+                throw new \UnexpectedValueException(
+                    sprintf('Given value (%s) is not in enum `%s`',
+                        $value, static::class
+                    )
+                );
+            }
         }
 
         //trick below is needed to make sure the value of original type gets set
