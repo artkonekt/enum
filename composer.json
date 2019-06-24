@@ -14,10 +14,10 @@
         }
     ],
     "require": {
-        "php": ">=7.0.0"
+        "php": "^7.1.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "6.2 - 7.5"
+        "phpunit/phpunit": "7 - 8"
     },
     "autoload": {
         "psr-4": { "Konekt\\Enum\\": "src/" }
