@@ -7,7 +7,6 @@ enabled:
   - blank_line_before_return
   - cast_spaces
   - concat_with_spaces
-  - const_separation
   - lowercase_static_reference
   - method_separation
   - new_with_braces
