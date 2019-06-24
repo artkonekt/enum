@@ -8,6 +8,8 @@
 - The `__default` const has been renamed to `__DEFAULT` for full PSR-1 compliance.
 - It is possible to set fallback to default for unknown values.
 - Rest of features are equivalent to v2.2.0.
+- PHP 7.0 support has been dropped.
+- Early PHP 7.4 support (as-is - since it hasn't been released yet).
 
 ## 2.2
 
