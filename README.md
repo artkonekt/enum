@@ -46,6 +46,7 @@ For the list of changes read the [Changelog](Changelog.md).
 ## Upgrade
 
 From 1.x -> 2.x see [Upgrade to 2.0](https://konekt.dev/enum/3.0/upgrade#from-v1-to-v2)
+
 From 2.x -> 3.x see [Upgrade to 3.0](https://konekt.dev/enum/3.0/upgrade#from-v2-to-v3)
 
 ## Laravel Eloquent Integration
