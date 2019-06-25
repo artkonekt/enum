@@ -37,7 +37,9 @@ using composer: `composer require konekt/enum`
 
 ## Documentation
 
-For detailed usage and examples go to the [Konekt Enum Documentation](https://artkonekt.github.io/enum) or refer to the markdown files in the `docs/` folder of this repo.
+For detailed usage and examples go to the
+[Konekt Enum Documentation](https://konekt.dev/enum/2.3) or refer to the
+markdown files in the `docs/` folder of this repo.
 
 For the list of changes read the [Changelog](Changelog.md).
 
