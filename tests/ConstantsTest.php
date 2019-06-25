@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Enum\Tests;
 
 use Konekt\Enum\Tests\Fixture\Sample123;
@@ -48,7 +47,6 @@ class ConstantsTest extends TestCase
         $this->assertFalse(SampleOneTwoThree::hasConst('one'));
         $this->assertTrue(SampleOneTwoThree::hasConst('ONE'));
     }
-
 
     /**
      * @test

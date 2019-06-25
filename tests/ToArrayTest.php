@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Enum\Tests;
 
 use Konekt\Enum\Tests\Fixture\NullableEnum;
@@ -20,7 +19,6 @@ use PHPUnit\Framework\TestCase;
 
 class ToArrayTest extends TestCase
 {
-
     /**
      * @test
      */

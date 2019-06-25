@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Enum\Tests\Fixture;
 
 use Konekt\Enum\Enum;

@@ -9,7 +9,6 @@
  *
  */
 
-
 namespace Konekt\Enum\Tests;
 
 use Konekt\Enum\Enum;
