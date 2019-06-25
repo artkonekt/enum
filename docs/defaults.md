@@ -89,6 +89,38 @@ var_dump(SpoinkBaz::defaultValue());
 var_dump(SpoinkBaz::__default);
 // string(6) "spoink"
 ```
+
+## Fallback To Default Value
+
+> This feature is present after v2.3 or v3.0
+
+It is possible to define the behavior for an enum so that if it receives
+a value that is not one of the predefined values, it falls back to the
+default instead of throwing an exception.
+
+This can be done by setting the **static** variable
+`$unknownValuesFallbackToDefault` to true:
+
+```php
+class FallbackEnum extends \Konekt\Enum\Enum
+{
+    const __default  = self::UNKNOWN;
+    const UNKNOWN    = null;
+    const SOME_VALUE = 'some_value';
+    const GOOD_VALUE = 'good_value';
+
+    protected static $unknownValuesFallbackToDefault = true;
+}
+
+var_dump(FallbackEnum::create('bullshit_value'));
+//class FallbackEnum#1 (1) {
+//  protected $value =>
+//  NULL
+//}
+```
+
+!> Make sure to define `$unknownValuesFallbackToDefault` as **static** variable!
+
 ---
 
 **Next**: [Nullable Enums &raquo;](nullables.md)

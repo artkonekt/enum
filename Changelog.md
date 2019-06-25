@@ -1,5 +1,12 @@
 # Konekt Enum Changelog
 
+## 2.3
+
+### 2.3.0
+##### Unreleased
+
+- It is possible to set fallback to default for unknown values (Backport from 3.0)
+
 ## 2.2
 
 ### 2.2.0
