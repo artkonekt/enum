@@ -3,9 +3,10 @@
 ## 2.3
 
 ### 2.3.0
-##### Unreleased
+##### 2019-06-25
 
 - It is possible to set fallback to default for unknown values (Backport from 3.0)
+- Tested against early version of PHP 7.4
 
 ## 2.2
 
