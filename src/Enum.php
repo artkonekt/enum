@@ -25,7 +25,7 @@ abstract class Enum
 
     protected static $unknownValuesFallbackToDefault = false;
 
-    private static $meta = [];
+    protected static $meta = [];
 
     /**
      * Class constructor.
@@ -349,7 +349,7 @@ abstract class Enum
     /**
      * Initializes the constants array for the class if necessary.
      */
-    private static function bootClass()
+    protected static function bootClass()
     {
         if (!array_key_exists(static::class, self::$meta)) {
             self::$meta[static::class] = (new \ReflectionClass(static::class))->getConstants();
@@ -369,7 +369,7 @@ abstract class Enum
      *
      * @return bool
      */
-    private static function compatibles($class1, $class2)
+    protected static function compatibles($class1, $class2)
     {
         if ($class1 == $class2) {
             return true;
@@ -387,7 +387,7 @@ abstract class Enum
      *
      * @return bool
      */
-    private static function hasLabels()
+    protected static function hasLabels()
     {
         return property_exists(static::class, 'labels');
     }
@@ -401,7 +401,7 @@ abstract class Enum
      *
      * @return string
      */
-    private static function getLabel($value)
+    protected static function getLabel($value)
     {
         self::bootClass();
 
@@ -412,7 +412,7 @@ abstract class Enum
         return (string) $value;
     }
 
-    private static function strToConstName($str)
+    protected static function strToConstName($str)
     {
         if (! ctype_lower($str)) {
             $str = preg_replace('/\s+/u', '', ucwords($str));
