@@ -1,6 +1,6 @@
 # Upgrading Older Versions
 
-# From v2 To v3
+## From v2 To v3
 
 The most important difference between 3.0 and 2.X versions:
 
@@ -12,16 +12,16 @@ have `__default` constants defined and rename them to `__DEFAULT`.
 
 If you don't want to do this, you can **safely keep using the 2.x versions**.
 
-# From v1 To v2
+## From v1 To v2
 
-## Renamed Methods
+### Renamed Methods
 
 - `getValue()` -> `value()`
 - `getDisplayText()` -> `label()`
 - `hasValue()` -> `has()`
 - `hasKey()` -> `hasConst()`
 
-## Consistent Naming
+### Consistent Naming
 
 In order to be more straightforward, the following naming changes have been done:
 
@@ -29,12 +29,12 @@ In order to be more straightforward, the following naming changes have been done
 - 'Key' has become 'const'
 - 'Values' is intact
 
-## Removed Features
+### Removed Features
 
 - strict comparison (`===`) has been removed (is always `==`)
 - `toArray()` never returns the '__default' key.
 
-## Null Values Must Be Explicit
+### Null Values Must Be Explicit
 
 It's not possible to have enums without values any more.
 
@@ -59,7 +59,7 @@ var_dump($unknown->value());
 
 ```
 
-## New Static Methods
+### New Static Methods
 
 - `values()`: returns all the values as an array.
 - `labels()`: returns the labels (with fallback to values if no label defined). Elements are always strings.
