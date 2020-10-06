@@ -7,6 +7,7 @@
 
 - Dropped PHP 7.1 and 7.2 support
 - Added PHP 8 support
+- Adopted PSR-12 Coding style (internally)
 
 ### 3.0.0
 ###### 2019-06-24
