@@ -11,6 +11,14 @@
 - PHP 7.0 support has been dropped.
 - Early PHP 7.4 support (as-is - since it hasn't been released yet).
 
+## 2.3
+
+### 2.3.0
+##### 2019-06-25
+
+- It is possible to set fallback to default for unknown values (Backport from 3.0)
+- Tested against early version of PHP 7.4
+
 ## 2.2
 
 ### 2.2.0
