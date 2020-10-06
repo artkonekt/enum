@@ -1,6 +1,12 @@
 # Konekt Enum Changelog
 
-## 3.0
+## 3.x
+
+### Unreleased
+###### 2020-XX-YY
+
+- Dropped PHP 7.1 and 7.2 support
+- Added PHP 8 support
 
 ### 3.0.0
 ###### 2019-06-24
