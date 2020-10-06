@@ -13,5 +13,5 @@ namespace Konekt\Enum\Tests\Fixture;
 
 class Sample1234 extends Sample123
 {
-    const FOUR = 4;
+    public const FOUR = 4;
 }

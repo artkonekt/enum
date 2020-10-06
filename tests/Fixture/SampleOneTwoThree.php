@@ -15,9 +15,9 @@ use Konekt\Enum\Enum;
 
 final class SampleOneTwoThree extends Enum
 {
-    const __DEFAULT = self::ONE;
+    public const __DEFAULT = self::ONE;
 
-    const ONE       = 'one';
-    const TWO       = 'two';
-    const THREE     = 'three';
+    public const ONE       = 'one';
+    public const TWO       = 'two';
+    public const THREE     = 'three';
 }

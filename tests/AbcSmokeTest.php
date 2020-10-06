@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 
 class AbcSmokeTest extends TestCase
 {
-    const MIN_PHP_VERSION = '7.0.0';
+    public const MIN_PHP_VERSION = '7.3.0';
 
     /**
      * Very Basic smoke test case for testing against parse errors, etc
@@ -35,8 +35,10 @@ class AbcSmokeTest extends TestCase
      */
     public function php_version_satisfies_requirements()
     {
-        $this->assertFalse(version_compare(PHP_VERSION, self::MIN_PHP_VERSION, '<'),
+        $this->assertFalse(
+            version_compare(PHP_VERSION, self::MIN_PHP_VERSION, '<'),
             'PHP version ' . self::MIN_PHP_VERSION . ' or greater is required but only '
-            . PHP_VERSION . ' found.');
+            . PHP_VERSION . ' found.'
+        );
     }
 }

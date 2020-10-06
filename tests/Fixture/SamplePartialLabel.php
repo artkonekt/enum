@@ -15,9 +15,9 @@ use Konekt\Enum\Enum;
 
 class SamplePartialLabel extends Enum
 {
-    const FOO   = 'foo';
-    const BAR   = 'bar';
-    const BAZ   = 'baz';
+    public const FOO   = 'foo';
+    public const BAR   = 'bar';
+    public const BAZ   = 'baz';
 
     protected static $labels = [
         self::FOO   => 'Foo Text',

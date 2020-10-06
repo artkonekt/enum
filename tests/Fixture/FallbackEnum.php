@@ -6,9 +6,9 @@ use Konekt\Enum\Enum;
 
 class FallbackEnum extends Enum
 {
-    const __DEFAULT = self::NO;
-    const YES       = 'yes';
-    const NO        = 'no';
+    public const __DEFAULT = self::NO;
+    public const YES       = 'yes';
+    public const NO        = 'no';
 
     protected static $unknownValuesFallbackToDefault = true;
 }

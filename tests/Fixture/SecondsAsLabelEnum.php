@@ -15,9 +15,9 @@ use Konekt\Enum\Enum;
 
 class SecondsAsLabelEnum extends Enum
 {
-    const __DEFAULT = self::CURRENT_SECOND;
+    public const __DEFAULT = self::CURRENT_SECOND;
 
-    const CURRENT_SECOND = 'current_second';
+    public const CURRENT_SECOND = 'current_second';
 
     protected static $labels = [];
 

@@ -15,7 +15,7 @@ use Konekt\Enum\Enum;
 
 class SampleNoLabel extends Enum
 {
-    const FOO   = 'fool';
-    const BAR   = 'bars';
-    const BAZ   = 'bazzez';
+    public const FOO   = 'fool';
+    public const BAR   = 'bars';
+    public const BAZ   = 'bazzez';
 }

@@ -15,11 +15,11 @@ use Konekt\Enum\Enum;
 
 class SampleLabelViaBootMethod extends Enum
 {
-    const __DEFAULT = self::ZSH;
-    const FOO       = 'foo';
-    const BAR       = 'bar';
-    const BAZ       = 'baz';
-    const ZSH       = 'zsh';
+    public const __DEFAULT = self::ZSH;
+    public const FOO       = 'foo';
+    public const BAR       = 'bar';
+    public const BAZ       = 'baz';
+    public const ZSH       = 'zsh';
 
     protected static $labels = [];
 

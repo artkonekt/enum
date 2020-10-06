@@ -18,7 +18,7 @@ namespace Konekt\Enum;
 abstract class Enum
 {
     /** Constant with default value for creating enum object */
-    const __DEFAULT = null;
+    public const __DEFAULT = null;
 
     /** @var mixed|null */
     protected $value;
@@ -48,8 +48,10 @@ abstract class Enum
                 $value = static::__DEFAULT;
             } else {
                 throw new \UnexpectedValueException(
-                    sprintf('Given value (%s) is not in enum `%s`',
-                        $value, static::class
+                    sprintf(
+                        'Given value (%s) is not in enum `%s`',
+                        $value,
+                        static::class
                     )
                 );
             }
@@ -126,8 +128,10 @@ abstract class Enum
         }
 
         throw new \BadMethodCallException(
-            sprintf('No such value (`%s`) or static method in this class %s',
-                $name, static::class
+            sprintf(
+                'No such value (`%s`) or static method in this class %s',
+                $name,
+                static::class
             )
         );
     }

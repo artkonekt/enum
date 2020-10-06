@@ -13,7 +13,7 @@ namespace Konekt\Enum\Tests\Fixture;
 
 class Sample12345With5AsDefault extends Sample1234
 {
-    const __DEFAULT = self::FIVE;
+    public const __DEFAULT = self::FIVE;
 
-    const FIVE      = 5;
+    public const FIVE      = 5;
 }

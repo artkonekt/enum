@@ -15,7 +15,7 @@ use Konekt\Enum\Enum;
 
 class NullableEnum extends Enum
 {
-    const UNKNOWN     = null;
-    const INITIALIZED = 1;
-    const COMPLETED   = 2;
+    public const UNKNOWN     = null;
+    public const INITIALIZED = 1;
+    public const COMPLETED   = 2;
 }

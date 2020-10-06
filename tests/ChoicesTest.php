@@ -12,9 +12,9 @@
 namespace Konekt\Enum\Tests;
 
 use Konekt\Enum\Tests\Fixture\SampleLabelViaBootMethod;
-use Konekt\Enum\Tests\Fixture\SampleWithLabel;
 use Konekt\Enum\Tests\Fixture\SampleNoLabel;
 use Konekt\Enum\Tests\Fixture\SamplePartialLabel;
+use Konekt\Enum\Tests\Fixture\SampleWithLabel;
 use PHPUnit\Framework\TestCase;
 
 class ChoicesTest extends TestCase

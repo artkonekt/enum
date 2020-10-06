@@ -15,6 +15,6 @@ use Konekt\Enum\Enum;
 
 final class SampleFooBarNoDefault extends Enum
 {
-    const FOO       = 'foo';
-    const BAR       = 'bar';
+    public const FOO       = 'foo';
+    public const BAR       = 'bar';
 }

@@ -15,10 +15,10 @@ use Konekt\Enum\Enum;
 
 final class SampleStatus extends Enum
 {
-    const __DEFAULT      = self::PLACED;
+    public const __DEFAULT      = self::PLACED;
 
-    const PLACED         = 'placed';
-    const CONFIRMED      = 'confirmed';
-    const PROCESSING     = 'processing';
-    const COMPLETED      = 'completed';
+    public const PLACED         = 'placed';
+    public const CONFIRMED      = 'confirmed';
+    public const PROCESSING     = 'processing';
+    public const COMPLETED      = 'completed';
 }

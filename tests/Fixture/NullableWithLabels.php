@@ -15,12 +15,12 @@ use Konekt\Enum\Enum;
 
 class NullableWithLabels extends Enum
 {
-    const __DEFAULT   = self::UNDEFINED;
+    public const __DEFAULT   = self::UNDEFINED;
 
-    const UNDEFINED = null;
-    const OPEN      = 'open';
-    const PROGRESS  = 'progress';
-    const DONE      = 'done';
+    public const UNDEFINED = null;
+    public const OPEN      = 'open';
+    public const PROGRESS  = 'progress';
+    public const DONE      = 'done';
 
     protected static $labels = [
         self::UNDEFINED => 'Undefined',
