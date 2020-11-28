@@ -2,8 +2,8 @@
 
 ## 3.x
 
-### Unreleased
-###### 2020-XX-YY
+### 3.1.0
+###### 2020-11-28
 
 - Dropped PHP 7.1 and 7.2 support
 - Added PHP 8 support
