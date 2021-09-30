@@ -14,6 +14,7 @@ namespace Konekt\Enum\Tests;
 use Konekt\Enum\Tests\Fixture\ConstsWithUnderscores;
 use Konekt\Enum\Tests\Fixture\NullableEnum;
 use Konekt\Enum\Tests\Fixture\SampleOneTwoThree;
+use Konekt\Enum\Tests\Fixture\SampleWithNumericConstName;
 use PHPUnit\Framework\Error\Notice;
 use PHPUnit\Framework\Error\Warning;
 use PHPUnit\Framework\TestCase;
@@ -124,5 +125,23 @@ class MagicComparisonTest extends TestCase
         $this->assertTrue($atHome->isAtHome());
         $this->assertFalse($atHome->is_went_fishing);
         $this->assertFalse($atHome->isWentFishing());
+    }
+
+    /** @test */
+    public function numerical_parts_at_const_name_endings_are_treated_properly()
+    {
+        $schalke = SampleWithNumericConstName::SCHALKE_04();
+
+        $this->assertTrue($schalke->isSchalke04());
+        $this->assertTrue($schalke->is_schalke_04);
+    }
+
+    /** @test */
+    public function numerical_parts_inside_const_name_endings_are_treated_properly()
+    {
+        $hoffenheim = SampleWithNumericConstName::FC_1899_HOFFENHEIM();
+
+        $this->assertTrue($hoffenheim->isFc1899Hoffenheim());
+        $this->assertTrue($hoffenheim->is_fc_1899_hoffenheim);
     }
 }

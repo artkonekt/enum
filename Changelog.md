@@ -2,6 +2,11 @@
 
 ## 3.x
 
+### Unreleased
+###### 2021-XX-YY
+
+- Fixed magic comparison getter/method in case there were numerical parts in the const name
+
 ### 3.1.0
 ###### 2020-11-28
 

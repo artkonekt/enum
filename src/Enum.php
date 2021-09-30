@@ -421,8 +421,9 @@ abstract class Enum
         if (! ctype_lower($str)) {
             $str = preg_replace('/\s+/u', '', ucwords($str));
             $str = strtolower(preg_replace('/(.)(?=[A-Z])/u', '$1' . '_', $str));
+            $str = preg_replace('/(.+?)([0-9]+)/u', '$1' . '_' . '$2', $str);
         }
 
-        return strtoupper($str);
+        return strtoupper(str_replace('__', '_', $str));
     }
 }
