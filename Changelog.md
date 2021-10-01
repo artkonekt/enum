@@ -6,7 +6,7 @@
 ###### 2021-09-30
 
 - Fixed magic comparison getter/method in case there were numerical parts in the const name
-- Tested with PHP 8.1
+- Tested and works with PHP 8.1
 - Replaced Travis CI with Github Actions
 
 ### 3.1.0
