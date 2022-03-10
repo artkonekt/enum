@@ -137,13 +137,11 @@ class NullableTest extends TestCase
         $this->assertIsInt($array['COMPLETED']);
     }
 
-
     /** @test */
     public function null_can_be_used_as_a_non_default_value()
     {
         $none = SampleHasNullButNotDefault::create(null);
 
         $this->assertEquals(null, $none->value());
-
     }
 }

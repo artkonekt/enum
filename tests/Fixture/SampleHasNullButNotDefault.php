@@ -19,7 +19,7 @@ use Konekt\Enum\Enum;
 class SampleHasNullButNotDefault extends Enum
 {
     public const __DEFAULT = self::HORSE;
-    const HORSE = 'horse';
-    const BICYCLE = 'bicycle';
-    const NOTHING = null;
+    public const HORSE = 'horse';
+    public const BICYCLE = 'bicycle';
+    public const NOTHING = null;
 }

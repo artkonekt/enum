@@ -40,7 +40,7 @@ abstract class Enum
     {
         self::bootClass();
 
-        if (null === $value && static::hasNot(NULL)) {
+        if (null === $value && static::hasNot(null)) {
             $value = static::__DEFAULT;
         }
 
