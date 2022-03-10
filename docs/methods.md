@@ -78,6 +78,8 @@ var_dump(FooBar::has('BAR'));
 
 ### `hasNot()`
 
+> Has been added in v4.0
+
 The negated counterpart of `has()`
 
 ### `hasConst()`
