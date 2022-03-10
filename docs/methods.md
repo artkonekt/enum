@@ -76,6 +76,10 @@ var_dump(FooBar::has('BAR'));
 // bool(false)
 ```
 
+### `hasNot()`
+
+The negated counterpart of `has()`
+
 ### `hasConst()`
 
 Returns whether a const is present in the specific enum class.

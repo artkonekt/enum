@@ -1,5 +1,21 @@
 # Konekt Enum Changelog
 
+## 4.x
+
+### Unreleased
+###### 2022-03-XX
+
+- Dropped PHP 7.3 and PHP 7.4 support
+- BC: Using strict comparison internally everywhere, consequences:
+  - types are now type sensitive,
+  - "2" != 2
+  - null != 0
+  - if you can do: `YourEnum::create("2")` then you can't `YourEnum::create(2)`  
+- Added the feature to create enums that have a null value but the default is not the null one.
+- Changed the internals to utilize streamlined PHP 8 features
+- Changed the internal implementation to use argument and return types everywhere
+- Changed the git attributes so that the test suite, docs and other helper files aren't exported in the vendor folder
+
 ## 3.x
 
 ### 3.1.1

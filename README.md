@@ -12,6 +12,10 @@
 
 Konekt Enum is a lightweight abstract class that enables creation of PHP enums.
 
+> **Why not PHP 8.1 Enums?** This package was created back in 2013, and has been in use across many libraries.
+> We're planning to find the way to make this package be based on native PHP enums AND keep compatibility
+> with earlier versions as much as possible. This is expected in the **v5.0** release of this package.
+
 ### Usage
 
 Extend the base class and define constants on it:
@@ -45,9 +49,9 @@ For the list of changes read the [Changelog](Changelog.md).
 
 ## Upgrade
 
-From 1.x -> 2.x see [Upgrade to 2.0](https://konekt.dev/enum/3.0/upgrade#from-v1-to-v2)
-
-From 2.x -> 3.x see [Upgrade to 3.0](https://konekt.dev/enum/3.0/upgrade#from-v2-to-v3)
+- From 3.x -> 4.x see [Upgrade to 4.0](https://konekt.dev/enum/4.x/upgrade#from-v3-to-v4)
+- From 2.x -> 3.x see [Upgrade to 3.0](https://konekt.dev/enum/4.x/upgrade#from-v2-to-v3)
+- From 1.x -> 2.x see [Upgrade to 2.0](https://konekt.dev/enum/4.x/upgrade#from-v1-to-v2)
 
 ## Laravel Eloquent Integration
 

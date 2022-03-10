@@ -15,8 +15,6 @@ use Konekt\Enum\Tests\Fixture\ConstsWithUnderscores;
 use Konekt\Enum\Tests\Fixture\NullableEnum;
 use Konekt\Enum\Tests\Fixture\SampleOneTwoThree;
 use Konekt\Enum\Tests\Fixture\SampleWithNumericConstName;
-use PHPUnit\Framework\Error\Notice;
-use PHPUnit\Framework\Error\Warning;
 use PHPUnit\Framework\TestCase;
 
 class MagicComparisonTest extends TestCase
@@ -38,7 +36,7 @@ class MagicComparisonTest extends TestCase
      */
     public function checking_equality_via_property_against_nonexistent_const_throws_a_notice()
     {
-        $this->expectException(Notice::class);
+        $this->expectNotice();
 
         $three = SampleOneTwoThree::THREE();
         $three->is_four;
@@ -76,7 +74,7 @@ class MagicComparisonTest extends TestCase
      */
     public function checking_equality_with_method_against_nonexistent_const_throws_a_warning()
     {
-        $this->expectException(Warning::class);
+        $this->expectWarning();
 
         $two = SampleOneTwoThree::TWO();
         $two->isFour();
@@ -87,7 +85,7 @@ class MagicComparisonTest extends TestCase
      */
     public function equality_magic_method_requires_first_letter_to_be_uppercase_after_is()
     {
-        $this->expectException(Warning::class);
+        $this->expectWarning();
 
         $two = SampleOneTwoThree::TWO();
         $two->istwo();

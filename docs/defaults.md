@@ -109,7 +109,7 @@ class FallbackEnum extends \Konekt\Enum\Enum
     const SOME_VALUE = 'some_value';
     const GOOD_VALUE = 'good_value';
 
-    protected static $unknownValuesFallbackToDefault = true;
+    protected static bool $unknownValuesFallbackToDefault = true;
 }
 
 var_dump(FallbackEnum::create('bullshit_value'));

@@ -1,8 +1,11 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * Contains the Enum Class.
  *
- * @copyright   Copyright (c) 2013-2019 Attila Fulop
+ * @copyright   Copyright (c) 2013-2022 Attila Fulop
  * @author      Attila Fulop
  * @license     MIT
  * @since       2013-09-23
@@ -20,12 +23,11 @@ abstract class Enum
     /** Constant with default value for creating enum object */
     public const __DEFAULT = null;
 
-    /** @var mixed|null */
-    protected $value;
+    protected mixed $value;
 
-    protected static $unknownValuesFallbackToDefault = false;
+    protected static bool $unknownValuesFallbackToDefault = false;
 
-    private static $meta = [];
+    private static array $meta = [];
 
     /**
      * Class constructor.
@@ -34,15 +36,14 @@ abstract class Enum
      *
      * @throws \UnexpectedValueException If value is not valid enum value
      */
-    public function __construct($value = null)
+    public function __construct(mixed $value = null)
     {
         self::bootClass();
 
-        if (is_null($value)) {
+        if (null === $value && static::hasNot(NULL)) {
             $value = static::__DEFAULT;
         }
 
-        /** @todo Allow unknown values to fallback to default */
         if (!static::has($value)) {
             if (static::$unknownValuesFallbackToDefault) {
                 $value = static::__DEFAULT;
@@ -58,7 +59,7 @@ abstract class Enum
         }
 
         //trick below is needed to make sure the value of original type gets set
-        $this->value = static::values()[array_search($value, static::values())];
+        $this->value = static::values()[array_search($value, static::values(), true)];
     }
 
     /**
@@ -80,7 +81,7 @@ abstract class Enum
      */
     public function __get($name)
     {
-        if (0 === strpos($name, 'is_') && strlen($name) > 3) {
+        if (str_starts_with($name, 'is_') && strlen($name) > 3) {
             $constName = self::strToConstName(substr($name, 3));
             if (self::hasConst($constName)) {
                 return $this->equalsByConstName($constName);
@@ -98,7 +99,7 @@ abstract class Enum
      */
     public function __call(string $name, array $arguments)
     {
-        if (0 === strpos($name, 'is') && strlen($name) > 2 && ctype_upper($name[2])) {
+        if (str_starts_with($name, 'is') && strlen($name) > 2 && ctype_upper($name[2])) {
             $constName = self::strToConstName(substr($name, 2));
             if (self::hasConst($constName)) {
                 return $this->equalsByConstName($constName);
@@ -141,7 +142,7 @@ abstract class Enum
      *
      * @return mixed
      */
-    public function value()
+    public function value(): mixed
     {
         return $this->value;
     }
@@ -152,7 +153,7 @@ abstract class Enum
      *
      * @return string
      */
-    public function label()
+    public function label(): string
     {
         return static::getLabel($this->value);
     }
@@ -165,13 +166,13 @@ abstract class Enum
      *
      * @return bool True if enums are equal
      */
-    public function equals($object)
+    public function equals(object $object): bool
     {
         if (!($object instanceof self) || !self::compatibles(get_class($object), static::class)) {
             return false;
         }
 
-        return $this->value() == $object->value();
+        return $this->value() === $object->value();
     }
 
     /**
@@ -182,7 +183,7 @@ abstract class Enum
      *
      * @return bool True if enums do not equal
      */
-    public function notEquals($object)
+    public function notEquals(object $object): bool
     {
         return !$this->equals($object);
     }
@@ -190,7 +191,7 @@ abstract class Enum
     /**
      * Returns the default value of the class. Equals to the __DEFAULT constant.
      */
-    public static function defaultValue()
+    public static function defaultValue(): mixed
     {
         return static::__DEFAULT;
     }
@@ -202,7 +203,7 @@ abstract class Enum
      *
      * @return static
      */
-    public static function create($value = null)
+    public static function create($value = null): static
     {
         return new static($value);
     }
@@ -214,9 +215,9 @@ abstract class Enum
      *
      * @return bool
      */
-    public static function hasConst($const)
+    public static function hasConst(string $const): bool
     {
-        return in_array($const, static::consts());
+        return in_array($const, static::consts(), true);
     }
 
     /**
@@ -224,23 +225,21 @@ abstract class Enum
      *
      * @return array
      */
-    public static function consts()
+    public static function consts(): array
     {
         self::bootClass();
 
         return array_keys(self::$meta[static::class]);
     }
 
-    /**
-     * Returns whether the enum contains the given value.
-     *
-     * @param mixed $value
-     *
-     * @return bool
-     */
-    public static function has($value)
+    public static function has(mixed $value): bool
     {
-        return in_array($value, static::values());
+        return in_array($value, static::values(), true);
+    }
+
+    public static function hasNot(mixed $value): bool
+    {
+        return !static::has($value, true);
     }
 
     /**
@@ -248,7 +247,7 @@ abstract class Enum
      *
      * @return array
      */
-    public static function values()
+    public static function values(): array
     {
         self::bootClass();
 
@@ -260,7 +259,7 @@ abstract class Enum
      *
      * @return array
      */
-    public static function labels()
+    public static function labels(): array
     {
         self::bootClass();
 
@@ -297,7 +296,7 @@ abstract class Enum
      *
      * @return array
      */
-    public static function choices()
+    public static function choices(): array
     {
         self::bootClass();
 
@@ -315,7 +314,7 @@ abstract class Enum
      *
      * @return array
      */
-    public static function toArray()
+    public static function toArray(): array
     {
         self::bootClass();
 
@@ -326,7 +325,7 @@ abstract class Enum
      * Clears static class metadata. Mainly useful in testing environments.
      * Next time the enum class gets used, the class will be rebooted.
      */
-    public static function reset()
+    public static function reset(): void
     {
         if (array_key_exists(static::class, self::$meta)) {
             unset(self::$meta[static::class]);
@@ -341,7 +340,7 @@ abstract class Enum
      *
      * @return bool
      */
-    private function equalsByConstName($const)
+    private function equalsByConstName(string $const): bool
     {
         return $this->equals(
             static::create(
@@ -353,7 +352,7 @@ abstract class Enum
     /**
      * Initializes the constants array for the class if necessary.
      */
-    private static function bootClass()
+    private static function bootClass(): void
     {
         if (!array_key_exists(static::class, self::$meta)) {
             self::$meta[static::class] = (new \ReflectionClass(static::class))->getConstants();
@@ -373,9 +372,9 @@ abstract class Enum
      *
      * @return bool
      */
-    private static function compatibles($class1, $class2)
+    private static function compatibles(string $class1, string $class2): bool
     {
-        if ($class1 == $class2) {
+        if ($class1 === $class2) {
             return true;
         } elseif (is_subclass_of($class1, $class2)) {
             return true;
@@ -391,7 +390,7 @@ abstract class Enum
      *
      * @return bool
      */
-    private static function hasLabels()
+    private static function hasLabels(): bool
     {
         return property_exists(static::class, 'labels');
     }
@@ -405,7 +404,7 @@ abstract class Enum
      *
      * @return string
      */
-    private static function getLabel($value)
+    private static function getLabel(mixed $value): string
     {
         self::bootClass();
 
@@ -416,7 +415,7 @@ abstract class Enum
         return (string) $value;
     }
 
-    private static function strToConstName($str)
+    private static function strToConstName($str): string
     {
         if (! ctype_lower($str)) {
             $str = preg_replace('/\s+/u', '', ucwords($str));

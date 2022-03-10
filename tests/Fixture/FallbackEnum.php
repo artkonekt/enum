@@ -10,5 +10,5 @@ class FallbackEnum extends Enum
     public const YES       = 'yes';
     public const NO        = 'no';
 
-    protected static $unknownValuesFallbackToDefault = true;
+    protected static bool $unknownValuesFallbackToDefault = true;
 }

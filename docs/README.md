@@ -1,5 +1,9 @@
 # Konekt Enum Documentation
 
+> **Why not PHP 8.1 Enums?** This package was created back in 2013, and has been in use across many libraries.
+> We're planning to find the way to make this package be based on native PHP enums AND keep compatibility
+> with earlier versions as much as possible. This is expected in the **v5.0** release.
+
 ## What's An Enum?
 
 Enums are handy when a variable (especially a method parameter) can only take one out of a small set of possible values.

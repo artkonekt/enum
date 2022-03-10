@@ -14,9 +14,6 @@ namespace Konekt\Enum\Tests;
 use Konekt\Enum\Tests\Fixture\SampleFooBarNoDefault;
 use PHPUnit\Framework\TestCase;
 
-/**
- * @deprecated
- */
 class NoDefaultTest extends TestCase
 {
     /**

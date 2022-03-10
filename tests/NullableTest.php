@@ -13,6 +13,7 @@ namespace Konekt\Enum\Tests;
 
 use Konekt\Enum\Enum;
 use Konekt\Enum\Tests\Fixture\NullableEnum;
+use Konekt\Enum\Tests\Fixture\SampleHasNullButNotDefault;
 use PHPUnit\Framework\TestCase;
 
 class NullableTest extends TestCase
@@ -134,5 +135,15 @@ class NullableTest extends TestCase
 
         $this->assertIsInt($array['INITIALIZED']);
         $this->assertIsInt($array['COMPLETED']);
+    }
+
+
+    /** @test */
+    public function null_can_be_used_as_a_non_default_value()
+    {
+        $none = SampleHasNullButNotDefault::create(null);
+
+        $this->assertEquals(null, $none->value());
+
     }
 }

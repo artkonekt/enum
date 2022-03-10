@@ -13,8 +13,10 @@ namespace Konekt\Enum\Tests;
 
 use Konekt\Enum\Enum;
 use Konekt\Enum\Tests\Fixture\Sample123;
+use Konekt\Enum\Tests\Fixture\SampleNumericWithBothZeroAndNull;
 use Konekt\Enum\Tests\Fixture\SampleOneTwoThree;
 use PHPUnit\Framework\TestCase;
+use UnexpectedValueException;
 
 class BaseEnumTest extends TestCase
 {
@@ -83,7 +85,7 @@ class BaseEnumTest extends TestCase
      */
     public function throws_exception_when_setting_invalid_value_in_factory_method()
     {
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(UnexpectedValueException::class);
 
         Sample123::create(4);
     }
@@ -93,7 +95,7 @@ class BaseEnumTest extends TestCase
      */
     public function throws_exception_when_setting_invalid_value_in_constructor()
     {
-        $this->expectException(\UnexpectedValueException::class);
+        $this->expectException(UnexpectedValueException::class);
 
         new Sample123(4);
     }
@@ -121,26 +123,34 @@ class BaseEnumTest extends TestCase
     /**
      * @test
      */
-    public function values_are_not_type_sensitive()
+    public function values_are_type_sensitive()
     {
         $this->assertTrue(Sample123::has(1));
-        $this->assertTrue(Sample123::has("1"));
-        $this->assertTrue(Sample123::has("2"));
-        $this->assertTrue(Sample123::has("3"));
+        $this->assertTrue(Sample123::has(2));
+        $this->assertTrue(Sample123::has(3));
+        $this->assertTrue(Sample123::hasNot("1"));
+        $this->assertTrue(Sample123::hasNot("2"));
+        $this->assertTrue(Sample123::hasNot("3"));
+    }
 
-        $twoStr = Sample123::create("2");
-        $twoInt = Sample123::create(2);
-        $this->assertTrue($twoStr->equals($twoInt));
-        $this->assertTrue($twoInt->equals($twoStr));
+    public function it_doesnt_allow_to_create_an_enum_if_the_value_is_not_the_same_type()
+    {
+        $this->expectException(UnexpectedValueException::class);
+        Sample123::create("2");
     }
 
     /**
      * @test
      */
-    public function values_are_of_proper_type_independently_from_how_it_was_constructed()
+    public function null_is_distinguished_from_zero()
     {
-        $this->assertIsInt(Sample123::create("2")->value());
-        $this->assertIsInt(Sample123::create(2)->value());
+        $any = SampleNumericWithBothZeroAndNull::create(null);
+        $false = SampleNumericWithBothZeroAndNull::create(0);
+
+        $this->assertNull($any->value());
+        $this->assertIsInt($false->value());
+        $this->assertEquals(0, $false->value());
+        $this->assertTrue($any->notEquals($false));
     }
 
     /**
