@@ -2,8 +2,10 @@
 
 ## 4.x
 
-### Unreleased
-###### 2022-03-XX
+### 4.0.0
+###### 2022-03-10
+
+> See the complete [Upgrade Guide](https://konekt.dev/enum/4.x/upgrade) in the Documentation
 
 - Dropped PHP 7.3 and PHP 7.4 support
 - BC: Using strict comparison internally everywhere, consequences:
