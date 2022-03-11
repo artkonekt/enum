@@ -2,6 +2,11 @@
 
 ## 4.x
 
+### Unreleased
+###### 2022-02-XX
+
+- Improved the details of the error message on unknown value errors
+
 ### 4.0.0
 ###### 2022-03-10
 

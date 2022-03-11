@@ -50,8 +50,9 @@ abstract class Enum
             } else {
                 throw new \UnexpectedValueException(
                     sprintf(
-                        'Given value (%s) is not in enum `%s`',
-                        $value,
+                        'Given value (%s %s) is not in enum `%s`',
+                        gettype($value),
+                        is_string($value) ? '"' . $value . '"' : $value,
                         static::class
                     )
                 );
