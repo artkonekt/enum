@@ -9,7 +9,7 @@ First, Enum v4 requires PHP 8.0 or later to run. Earlier PHP versions are not su
 ### Strict Type Checking
 
 The most important difference between 4.0 and 3.X versions is that
-**All the values** of the enums **are not strictly typed**.
+**All the values** of the enums **are now strictly typed**.
 
 In earlier versions you could do this:
 
