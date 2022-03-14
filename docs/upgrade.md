@@ -90,6 +90,42 @@ class YourEnum extends \Konekt\Enum\Enum {
 }
 ```
 
+### Type Compatibility Checklist
+
+Check if your enums have any of the following properties/methods:
+
+- [ ] `$unknownValuesFallbackToDefault`: add the `bool` type: `protected static bool $unknownValuesFallbackToDefault`
+- [ ] `choices()` method: add return type `: array`
+- [ ] `toArray()` method: add return type `: array`
+
+When doing comparison with `equals()` or `notEquals()` make sure you pass an enum instance and not a string or other scalar.
+Due to the lack of type safety in v3 and before this did not give an error:
+
+```php
+$red = Color::RED()
+$red->equals('red')
+//=> false
+```
+
+As you see this still gave false, so it didn't actually work even earlier, but the error got "swallowed".
+Doing the same with v4 raises a type error:
+
+```
+TypeError: Konekt\Enum\Enum::equals(): Argument #1 ($object) must be of type object, string given
+```
+
+To fix it do this instead:
+
+```php
+$red->equals(Color::RED());
+// or
+$red->equals(Color::create('red'));
+// or
+$red->is_red;
+// or
+$red->isRed();
+```
+
 ## From v2 To v3
 
 The most important difference between 3.0 and 2.X versions:
