@@ -1,6 +1,6 @@
 # Konekt Enum
 
-[![Tests](https://img.shields.io/github/workflow/status/artkonekt/enum/tests/master?style=flat-square)](https://github.com/artkonekt/enum/actions?query=workflow%3Atests)
+[![Tests](https://img.shields.io/github/actions/workflow/status/artkonekt/enum/tests.yml?branch=master&style=flat-square)](https://github.com/artkonekt/enum/actions?query=workflow%3Atests)
 [![Packagist Stable Version](https://img.shields.io/packagist/v/konekt/enum.svg?style=flat-square&label=stable)](https://packagist.org/packages/konekt/enum)
 [![Packagist downloads](https://img.shields.io/packagist/dt/konekt/enum.svg?style=flat-square)](https://packagist.org/packages/konekt/enum)
 [![StyleCI](https://styleci.io/repos/60036504/shield?branch=master)](https://styleci.io/repos/60036504)
