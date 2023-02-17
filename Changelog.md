@@ -2,6 +2,11 @@
 
 ## 4.x
 
+## Unreleased
+##### 2023-XX-YY
+
+- Tested and works with PHP 8.2 
+
 ### 4.0.1
 ###### 2022-02-11
 
