@@ -3,12 +3,12 @@
 ## 4.x
 
 ## 4.0.2
-##### 2023-02-17
+###### 2023-02-17
 
 - Tested and works with PHP 8.2 
 
 ### 4.0.1
-###### 2022-02-11
+###### 2022-03-11
 
 - Improved the details of the error message on unknown value errors
 
