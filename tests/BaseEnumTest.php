@@ -33,16 +33,6 @@ class BaseEnumTest extends TestCase
     /**
      * @test
      */
-    public function can_be_created_with_factory_method()
-    {
-        $enum = Sample123::create();
-
-        $this->assertInstanceOf(Enum::class, $enum);
-    }
-
-    /**
-     * @test
-     */
     public function has_default_value_when_none_was_explicitely_set()
     {
         $enum = Sample123::create();
