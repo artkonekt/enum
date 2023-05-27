@@ -240,7 +240,7 @@ abstract class Enum
 
     public static function hasNot(mixed $value): bool
     {
-        return !static::has($value, true);
+        return !static::has($value);
     }
 
     /**
