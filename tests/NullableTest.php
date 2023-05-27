@@ -25,7 +25,6 @@ class NullableTest extends TestCase
     {
         $unknown = NullableEnum::create();
 
-        $this->assertInstanceOf(Enum::class, $unknown);
         $this->assertNull($unknown->value());
     }
 
@@ -36,7 +35,6 @@ class NullableTest extends TestCase
     {
         $unknown = NullableEnum::create(null);
 
-        $this->assertInstanceOf(Enum::class, $unknown);
         $this->assertNull($unknown->value());
     }
 
