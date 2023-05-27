@@ -393,7 +393,7 @@ abstract class Enum
      *
      * !!Make sure it only gets called after bootClass()!!
      *
-     * @param $value
+     * @param mixed $value
      *
      * @return string
      */
