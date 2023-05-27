@@ -94,8 +94,8 @@ class NullableTest extends TestCase
         $this->assertCount(3, $values);
 
         $this->assertNull($values[0]);
-        $this->assertEquals(NullableEnum::INITIALIZED, $values[1]);
-        $this->assertEquals(NullableEnum::COMPLETED, $values[2]);
+        $this->assertSame(NullableEnum::INITIALIZED, $values[1]);
+        $this->assertSame(NullableEnum::COMPLETED, $values[2]);
     }
 
     /**
@@ -111,9 +111,9 @@ class NullableTest extends TestCase
         $this->assertArrayHasKey(1, $choices);
         $this->assertArrayHasKey(2, $choices);
 
-        $this->assertEquals('', $choices['']);
-        $this->assertEquals('1', $choices[1]);
-        $this->assertEquals('2', $choices[2]);
+        $this->assertSame('', $choices['']);
+        $this->assertSame('1', $choices[1]);
+        $this->assertSame('2', $choices[2]);
     }
 
     /**
@@ -130,8 +130,8 @@ class NullableTest extends TestCase
         $this->assertArrayHasKey('COMPLETED', $array);
 
         $this->assertNull($array['UNKNOWN']);
-        $this->assertEquals(1, $array['INITIALIZED']);
-        $this->assertEquals(2, $array['COMPLETED']);
+        $this->assertSame(1, $array['INITIALIZED']);
+        $this->assertSame(2, $array['COMPLETED']);
 
         $this->assertIsInt($array['INITIALIZED']);
         $this->assertIsInt($array['COMPLETED']);
@@ -142,6 +142,6 @@ class NullableTest extends TestCase
     {
         $none = SampleHasNullButNotDefault::create(null);
 
-        $this->assertEquals(null, $none->value());
+        $this->assertSame(null, $none->value());
     }
 }

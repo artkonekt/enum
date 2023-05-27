@@ -34,17 +34,17 @@ class MagicConstructorTest extends TestCase
     {
         $one = Sample123::ONE();
 
-        $this->assertEquals(1, $one->value());
+        $this->assertSame(1, $one->value());
         $this->assertTrue($one->equals(Sample123::create(1)));
 
         $two = SampleOneTwoThree::create(SampleOneTwoThree::TWO);
 
-        $this->assertEquals('two', $two->value());
+        $this->assertSame('two', $two->value());
         $this->assertTrue(SampleOneTwoThree::create('two')->equals($two));
 
-        $this->assertEquals('one', SampleOneTwoThree::ONE()->value());
-        $this->assertEquals('two', SampleOneTwoThree::TWO()->value());
-        $this->assertEquals('three', SampleOneTwoThree::THREE()->value());
+        $this->assertSame('one', SampleOneTwoThree::ONE()->value());
+        $this->assertSame('two', SampleOneTwoThree::TWO()->value());
+        $this->assertSame('three', SampleOneTwoThree::THREE()->value());
     }
 
     /**

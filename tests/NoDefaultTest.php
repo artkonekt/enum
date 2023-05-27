@@ -31,8 +31,8 @@ class NoDefaultTest extends TestCase
      */
     public function string_cast_works_even_if_no_default_is_present()
     {
-        $this->assertEquals('foo', (string) SampleFooBarNoDefault::FOO());
-        $this->assertEquals('bar', (string) SampleFooBarNoDefault::BAR());
+        $this->assertSame('foo', (string)SampleFooBarNoDefault::FOO());
+        $this->assertSame('bar', (string)SampleFooBarNoDefault::BAR());
     }
 
     /**
@@ -41,13 +41,13 @@ class NoDefaultTest extends TestCase
     public function value_can_be_retrieved()
     {
         $foo = SampleFooBarNoDefault::FOO();
-        $this->assertEquals('foo', $foo->value());
+        $this->assertSame('foo', $foo->value());
 
         $bar = SampleFooBarNoDefault::create(SampleFooBarNoDefault::BAR);
-        $this->assertEquals('bar', $bar->value());
+        $this->assertSame('bar', $bar->value());
 
         $foo2 = new SampleFooBarNoDefault(SampleFooBarNoDefault::FOO);
-        $this->assertEquals('foo', $foo2->value());
+        $this->assertSame('foo', $foo2->value());
     }
 
     /**

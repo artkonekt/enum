@@ -57,14 +57,14 @@ class ChoicesTest extends TestCase
     {
         $choices = SampleWithLabel::choices();
 
-        $this->assertEquals('Foo Text', $choices[SampleWithLabel::FOO]);
-        $this->assertEquals(SampleWithLabel::FOO()->label(), $choices[SampleWithLabel::FOO]);
+        $this->assertSame('Foo Text', $choices[SampleWithLabel::FOO]);
+        $this->assertSame(SampleWithLabel::FOO()->label(), $choices[SampleWithLabel::FOO]);
 
-        $this->assertEquals('Bar Text', $choices[SampleWithLabel::BAR]);
-        $this->assertEquals(SampleWithLabel::BAR()->label(), $choices[SampleWithLabel::BAR]);
+        $this->assertSame('Bar Text', $choices[SampleWithLabel::BAR]);
+        $this->assertSame(SampleWithLabel::BAR()->label(), $choices[SampleWithLabel::BAR]);
 
-        $this->assertEquals('Baz Text', $choices[SampleWithLabel::BAZ]);
-        $this->assertEquals(SampleWithLabel::BAZ()->label(), $choices[SampleWithLabel::BAZ]);
+        $this->assertSame('Baz Text', $choices[SampleWithLabel::BAZ]);
+        $this->assertSame(SampleWithLabel::BAZ()->label(), $choices[SampleWithLabel::BAZ]);
     }
 
     /**
@@ -74,9 +74,9 @@ class ChoicesTest extends TestCase
     {
         $choices = SampleNoLabel::choices();
 
-        $this->assertEquals(SampleNoLabel::FOO, $choices[SampleNoLabel::FOO]);
-        $this->assertEquals(SampleNoLabel::BAR, $choices[SampleNoLabel::BAR]);
-        $this->assertEquals(SampleNoLabel::BAZ, $choices[SampleNoLabel::BAZ]);
+        $this->assertSame(SampleNoLabel::FOO, $choices[SampleNoLabel::FOO]);
+        $this->assertSame(SampleNoLabel::BAR, $choices[SampleNoLabel::BAR]);
+        $this->assertSame(SampleNoLabel::BAZ, $choices[SampleNoLabel::BAZ]);
     }
 
     /**
@@ -86,9 +86,9 @@ class ChoicesTest extends TestCase
     {
         $choices = SamplePartialLabel::choices();
 
-        $this->assertEquals('Foo Text', $choices[SamplePartialLabel::FOO]);
-        $this->assertEquals('Bar Text', $choices[SamplePartialLabel::BAR]);
-        $this->assertEquals(SamplePartialLabel::BAZ, $choices[SamplePartialLabel::BAZ]);
+        $this->assertSame('Foo Text', $choices[SamplePartialLabel::FOO]);
+        $this->assertSame('Bar Text', $choices[SamplePartialLabel::BAR]);
+        $this->assertSame(SamplePartialLabel::BAZ, $choices[SamplePartialLabel::BAZ]);
     }
 
     /**
@@ -98,9 +98,9 @@ class ChoicesTest extends TestCase
     {
         $choices = SampleLabelViaBootMethod::choices();
 
-        $this->assertEquals('Foo is good', $choices[SampleLabelViaBootMethod::FOO]);
-        $this->assertEquals('Bar is better', $choices[SampleLabelViaBootMethod::BAR]);
-        $this->assertEquals('Baz is best', $choices[SampleLabelViaBootMethod::BAZ]);
+        $this->assertSame('Foo is good', $choices[SampleLabelViaBootMethod::FOO]);
+        $this->assertSame('Bar is better', $choices[SampleLabelViaBootMethod::BAR]);
+        $this->assertSame('Baz is best', $choices[SampleLabelViaBootMethod::BAZ]);
     }
 
     /**
@@ -110,8 +110,8 @@ class ChoicesTest extends TestCase
     {
         $choices = SampleLabelViaBootMethod::choices();
 
-        $this->assertEquals('Foo is good', $choices[SampleLabelViaBootMethod::FOO]);
-        $this->assertEquals('Bar is better', $choices[SampleLabelViaBootMethod::BAR]);
-        $this->assertEquals('Baz is best', $choices[SampleLabelViaBootMethod::BAZ]);
+        $this->assertSame('Foo is good', $choices[SampleLabelViaBootMethod::FOO]);
+        $this->assertSame('Bar is better', $choices[SampleLabelViaBootMethod::BAR]);
+        $this->assertSame('Baz is best', $choices[SampleLabelViaBootMethod::BAZ]);
     }
 }

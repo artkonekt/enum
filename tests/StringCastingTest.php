@@ -27,40 +27,40 @@ class StringCastingTest extends TestCase
     public function casting_to_string_returns_the_label()
     {
         $foo = SampleWithLabel::FOO();
-        $this->assertEquals('Foo Text', (string) $foo);
+        $this->assertSame('Foo Text', (string)$foo);
 
         $bar = SampleWithLabel::BAR();
-        $this->assertEquals('Bar Text', (string) $bar);
+        $this->assertSame('Bar Text', (string)$bar);
 
         $baz = SampleWithLabel::BAZ();
-        $this->assertEquals('Baz Text', (string) $baz);
+        $this->assertSame('Baz Text', (string)$baz);
 
         $baz2 = new SampleWithLabel(SampleWithLabel::BAZ);
-        $this->assertEquals('Baz Text', (string) $baz2);
+        $this->assertSame('Baz Text', (string)$baz2);
 
         $foon = SampleNoLabel::FOO();
-        $this->assertEquals(SampleNoLabel::FOO, (string) $foon);
+        $this->assertSame(SampleNoLabel::FOO, (string)$foon);
 
         $barn = SampleNoLabel::BAR();
-        $this->assertEquals(SampleNoLabel::BAR, (string) $barn);
+        $this->assertSame(SampleNoLabel::BAR, (string)$barn);
 
         $bazn = SampleNoLabel::BAZ();
-        $this->assertEquals(SampleNoLabel::BAZ, (string) $bazn);
+        $this->assertSame(SampleNoLabel::BAZ, (string)$bazn);
 
         $bazn2 = new SampleNoLabel(SampleNoLabel::BAZ);
-        $this->assertEquals(SampleNoLabel::BAZ, (string) $bazn2);
+        $this->assertSame(SampleNoLabel::BAZ, (string)$bazn2);
 
         $foop = SamplePartialLabel::FOO();
-        $this->assertEquals('Foo Text', (string) $foop);
+        $this->assertSame('Foo Text', (string)$foop);
 
         $barp = SamplePartialLabel::BAR();
-        $this->assertEquals('Bar Text', (string) $barp);
+        $this->assertSame('Bar Text', (string)$barp);
 
         $bazp = SamplePartialLabel::BAZ();
-        $this->assertEquals(SamplePartialLabel::BAZ, (string) $bazp);
+        $this->assertSame(SamplePartialLabel::BAZ, (string)$bazp);
 
         $bazp2 = new SamplePartialLabel(SamplePartialLabel::BAZ);
-        $this->assertEquals(SamplePartialLabel::BAZ, (string) $bazp2);
+        $this->assertSame(SamplePartialLabel::BAZ, (string)$bazp2);
     }
 
     /**
@@ -69,17 +69,17 @@ class StringCastingTest extends TestCase
     public function casting_to_string_always_equals_to_the_label()
     {
         $foo = SampleLabelViaBootMethod::FOO();
-        $this->assertEquals($foo->label(), (string) $foo);
+        $this->assertSame($foo->label(), (string)$foo);
 
         $bar = SampleLabelViaBootMethod::BAR();
-        $this->assertEquals($bar->label(), (string) $bar);
+        $this->assertSame($bar->label(), (string)$bar);
 
         $baz = SampleLabelViaBootMethod::BAZ();
-        $this->assertEquals($baz->label(), (string) $baz);
+        $this->assertSame($baz->label(), (string)$baz);
 
         // Test empty value
         $fooBarBaz = new SampleLabelViaBootMethod();
-        $this->assertEquals($fooBarBaz->label(), (string) $fooBarBaz);
+        $this->assertSame($fooBarBaz->label(), (string)$fooBarBaz);
     }
 
     /**
@@ -87,11 +87,11 @@ class StringCastingTest extends TestCase
      */
     public function it_returns_the_value_when_no_label_was_set()
     {
-        $this->assertEquals('one', (string) SampleOneTwoThree::ONE());
-        $this->assertEquals('two', (string) SampleOneTwoThree::TWO());
+        $this->assertSame('one', (string)SampleOneTwoThree::ONE());
+        $this->assertSame('two', (string)SampleOneTwoThree::TWO());
 
         $three = new SampleOneTwoThree(SampleOneTwoThree::THREE);
-        $this->assertEquals('three', (string) $three);
+        $this->assertSame('three', (string)$three);
     }
 
     /**
@@ -99,11 +99,11 @@ class StringCastingTest extends TestCase
      */
     public function numeric_values_are_converted_to_string_dooh()
     {
-        $this->assertEquals('1', (string) Sample123::ONE());
-        $this->assertEquals('2', (string) Sample123::TWO());
+        $this->assertSame('1', (string)Sample123::ONE());
+        $this->assertSame('2', (string)Sample123::TWO());
 
         $three = new Sample123(Sample123::THREE);
-        $this->assertEquals('3', (string) $three);
-        $this->assertNotEquals('33', (string) $three);
+        $this->assertSame('3', (string)$three);
+        $this->assertNotSame('33', (string)$three);
     }
 }

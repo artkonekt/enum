@@ -26,11 +26,11 @@ class ResetTest extends TestCase
 
         sleep(1);
         // Labels are set at boot() time
-        $this->assertEquals($label, $second->label());
+        $this->assertSame($label, $second->label());
 
         // After reset() the class should be rebooted
         SecondsAsLabelEnum::reset();
         sleep(1);
-        $this->assertNotEquals($label, $second->label());
+        $this->assertNotSame($label, $second->label());
     }
 }

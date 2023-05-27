@@ -19,6 +19,6 @@ class FallbackEnumTest extends TestCase
     /** @test */
     public function it_falls_back_to_the_default_value_if_static_variable_unknown_values_fallback_to_default_is_true()
     {
-        $this->assertEquals(FallbackEnum::defaultValue(), FallbackEnum::create('bullshit')->value());
+        $this->assertSame(FallbackEnum::defaultValue(), FallbackEnum::create('bullshit')->value());
     }
 }

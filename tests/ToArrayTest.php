@@ -32,9 +32,9 @@ class ToArrayTest extends TestCase
         $this->assertArrayHasKey('TWO', $arr);
         $this->assertArrayHasKey('THREE', $arr);
 
-        $this->assertEquals('one', $arr['ONE']);
-        $this->assertEquals('two', $arr['TWO']);
-        $this->assertEquals('three', $arr['THREE']);
+        $this->assertSame('one', $arr['ONE']);
+        $this->assertSame('two', $arr['TWO']);
+        $this->assertSame('three', $arr['THREE']);
     }
 
     /**

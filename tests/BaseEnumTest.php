@@ -47,17 +47,17 @@ class BaseEnumTest extends TestCase
     {
         $enum = Sample123::create();
 
-        $this->assertEquals(Sample123::__DEFAULT, $enum->value());
+        $this->assertSame(Sample123::__DEFAULT, $enum->value());
 
         $def = new SampleOneTwoThree();
 
-        $this->assertEquals(SampleOneTwoThree::__DEFAULT, $def->value());
-        $this->assertEquals('one', $def->value());
+        $this->assertSame(SampleOneTwoThree::__DEFAULT, $def->value());
+        $this->assertSame('one', $def->value());
 
         $defn = new Sample123();
 
-        $this->assertEquals(Sample123::__DEFAULT, $defn->value());
-        $this->assertEquals(1, $defn->value());
+        $this->assertSame(Sample123::__DEFAULT, $defn->value());
+        $this->assertSame(1, $defn->value());
     }
 
     /**
@@ -67,7 +67,7 @@ class BaseEnumTest extends TestCase
     {
         $three = new Sample123(Sample123::THREE);
 
-        $this->assertEquals(Sample123::THREE, $three->value());
+        $this->assertSame(Sample123::THREE, $three->value());
     }
 
     /**
@@ -77,7 +77,7 @@ class BaseEnumTest extends TestCase
     {
         $two = Sample123::create(Sample123::TWO);
 
-        $this->assertEquals(Sample123::TWO, $two->value());
+        $this->assertSame(Sample123::TWO, $two->value());
     }
 
     /**
@@ -149,7 +149,7 @@ class BaseEnumTest extends TestCase
 
         $this->assertNull($any->value());
         $this->assertIsInt($false->value());
-        $this->assertEquals(0, $false->value());
+        $this->assertSame(0, $false->value());
         $this->assertTrue($any->notEquals($false));
     }
 
