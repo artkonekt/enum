@@ -375,15 +375,7 @@ abstract class Enum
      */
     private static function compatibles(string $class1, string $class2): bool
     {
-        if ($class1 === $class2) {
-            return true;
-        } elseif (is_subclass_of($class1, $class2)) {
-            return true;
-        } elseif (is_subclass_of($class2, $class1)) {
-            return true;
-        }
-
-        return false;
+        return $class1 === $class2 || is_subclass_of($class1, $class2) || is_subclass_of($class2, $class1);
     }
 
     /**
