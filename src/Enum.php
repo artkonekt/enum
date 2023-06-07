@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * Contains the Enum Class.
  *
- * @copyright   Copyright (c) 2013-2022 Attila Fulop
+ * @copyright   Copyright (c) 2013 Attila Fulop
  * @author      Attila Fulop
  * @license     MIT
  * @since       2013-09-23
@@ -18,7 +18,7 @@ namespace Konekt\Enum;
  *
  * All you have to do is extend this class and define some constants.
  */
-abstract class Enum
+abstract class Enum implements EnumInterface
 {
     /** Constant with default value for creating enum object */
     public const __DEFAULT = null;
