@@ -2,8 +2,8 @@
 
 ## 4.x
 
-## Unreleased
-###### 2023-XX-YY
+## 4.1.0
+###### 2023-06-07
 
 - Added the `EnumInterface` (contains most public v4 enum methods); the `Enum` class implements it
 

@@ -134,4 +134,4 @@ print_r(BarType::choices());
 
 ---
 
-**Next**: [Methods &raquo;](methods.md)
+**Next**: [The Enum Interface](interface.md)

@@ -2,7 +2,7 @@
 
 Install it via composer:
 
-```
+```bash
 composer require konekt/enum
 ```
 

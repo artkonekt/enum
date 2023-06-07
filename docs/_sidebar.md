@@ -9,6 +9,7 @@
     - [Nullable Enums](nullables.md)
     - [Comparing Enums](compare.md)
     - [Labels](labels.md)
+    - [The Enum Interface](interface.md)
     - [Methods](methods.md)
     - [Examples](examples.md)
 
