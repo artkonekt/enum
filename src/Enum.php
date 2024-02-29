@@ -425,7 +425,7 @@ abstract class Enum implements EnumInterface
 
     private static function strToConstName($str): string
     {
-        if (! ctype_lower($str)) {
+        if (!ctype_lower($str)) {
             $str = preg_replace('/\s+/u', '', ucwords($str));
             $str = strtolower(preg_replace('/(.)(?=[A-Z])/u', '$1' . '_', $str));
             $str = preg_replace('/(.+?)([0-9]+)/u', '$1' . '_' . '$2', $str);
