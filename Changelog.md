@@ -6,6 +6,11 @@
 ###### 2024-XX-YY
 
 - Added the `isAnyOf()`, `isNoneOf()` and `doesNotEqualTo()` comparison methods
+- Added the following methods to the `EnumInterface`:
+  - `equals()`
+  - `doesNotEqualTo()`
+  - `isAnyOf()`
+  - `isNoneOf()`
 
 ## 4.1.0
 ###### 2023-06-07

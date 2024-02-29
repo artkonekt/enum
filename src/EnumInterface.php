@@ -28,5 +28,13 @@ interface EnumInterface
 
     public static function defaultValue(): mixed;
 
+    public function equals(object $object): bool;
+
+    public function doesNotEqualTo(EnumInterface $enum): bool;
+
+    public function isAnyOf(EnumInterface ...$enums): bool;
+
+    public function isNoneOf(EnumInterface ...$enums): bool;
+
     public static function create($value = null): static;
 }
