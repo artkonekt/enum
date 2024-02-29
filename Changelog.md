@@ -2,9 +2,10 @@
 
 ## 4.x
 
-## Unreleased
-###### 2024-XX-YY
+### 4.2.0
+###### 2024-02-29
 
+- Tested and works with PHP 8.3
 - Added the `isAnyOf()`, `isNoneOf()` and `doesNotEqualTo()` comparison methods
 - Added the following methods to the `EnumInterface`:
   - `equals()`
