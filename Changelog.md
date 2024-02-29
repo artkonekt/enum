@@ -2,6 +2,11 @@
 
 ## 4.x
 
+## Unreleased
+###### 2024-XX-YY
+
+- Added the `isAnyOf()`, `isNoneOf()` and `doesNotEqualTo()` comparison methods
+
 ## 4.1.0
 ###### 2023-06-07
 

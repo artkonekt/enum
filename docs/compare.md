@@ -31,8 +31,9 @@ var_dump(
 // bool(true)
 ```
 
-Many developers prefer to avoid using negative conditions in their code
-like:
+### Does Not Equal To
+
+Many developers prefer to avoid using negative conditions in their code like:
 
 ```php
 if (!$one->equals($two)) //...
@@ -40,6 +41,9 @@ if (!$one->equals($two)) //...
 
 thus the `notEquals()` method is available (since v2.2) for improved
 code readability. It's simply just the negation of `equals()`.
+
+In v4.2, the `doesNotEqualTo(EnumInterface $enum): bool` method has been added, which is equivalent to the `notEquals()` method,
+but it only accepts `EnumInterface` as argument.
 
 ### Type Check
 
@@ -140,6 +144,44 @@ _Examples:_
 const ONE = 1           ==> isOne()
 const LUCKY_LUKE = 'll' ==> isLuckyLuke()
 ```
+
+## The `isAnyOf()` and `isNoneOf()` Methods
+
+> This is a v4.2+ feature
+
+It is possible to check whether an enum "is any of" or "is none of" multiple enum instances:
+
+```php
+class Status extends \Konekt\Enum\Enum
+{
+    public const NEW = 'new';
+    public const PENDING = 'pending';
+    public const COMPLETE = 'complete';
+    public const CANCELED = 'canceled';
+}
+
+$new = Status::NEW(); 
+$new->isAnyOf(Status::PENDING(), Status::NEW());
+// => true
+
+$complete = Status::COMPLETE(); 
+$complete->isNoneOf(Status::PENDING(), Status::NEW());
+// => true
+
+$canceled = Status::CANCELED();
+$canceled->isAnyOf(Status::NEW(), Status::PENDING());
+// => false
+
+$pending = Status::PENDING();
+$pending->isNoneOf(Status::PENDING(), Status::COMPLETE());
+// => false
+```
+
+You can pass any number of arguments to the `isNoneOf()` and `isAnyOf()` methods,
+but all of them have to be `EnumInterface` instances.
+
+The methods will use the `equals()` method under the hood to compare the enums, so the same rules described above apply
+here as well.
 
 ---
 
