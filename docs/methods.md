@@ -185,6 +185,34 @@ Checks if two enums are NOT equal. The opposite of equals.
 
 For detailed description read the [Comparing Enums](compare.md) section.
 
+### `doesNotEqualTo()`
+
+Alias of `notEquals()` but accepts `EnumInterface` as argument, notEquals accepts any `object`;
+
+For detailed description read the [Comparing Enums](compare.md) section.
+
+### `isAnyOf()`
+
+Returns whether an enum equals to any of the given arguments:
+
+```php
+$new = Status::NEW(); 
+$new->isAnyOf(Status::PENDING(), Status::NEW());
+// => true
+```
+
+### `isNoneOf()`
+
+Checks whether an enum is none of the passed arguments. The opposite of `isAnyOf()`:
+
+```php
+$new = Status::NEW(); 
+$new->isNoneOf(Status::PENDING(), Status::COMPLETED());
+// => true
+```
+
+For detailed description read the [Comparing Enums](compare.md) section.
+
 ### `value()`
 
 Returns the value of the enum instance.
