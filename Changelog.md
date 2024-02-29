@@ -12,12 +12,12 @@
   - `isAnyOf()`
   - `isNoneOf()`
 
-## 4.1.0
+### 4.1.0
 ###### 2023-06-07
 
 - Added the `EnumInterface` (contains most public v4 enum methods); the `Enum` class implements it
 
-## 4.0.2
+### 4.0.2
 ###### 2023-02-17
 
 - Tested and works with PHP 8.2 
@@ -68,7 +68,7 @@
 - PHP 7.0 support has been dropped.
 - Early PHP 7.4 support (as-is - since it hasn't been released yet).
 
-## 2.3
+## 2.x
 
 ### 2.3.0
 ##### 2019-06-25
@@ -76,15 +76,11 @@
 - It is possible to set fallback to default for unknown values (Backport from 3.0)
 - Tested against early version of PHP 7.4
 
-## 2.2
-
 ### 2.2.0
 ###### 2019-02-14
 
 - The `notEquals()` comparison method has been added.
 - Tested with PHP 7.3 (has been working with earlier versions as well)
-
-## 2.1
 
 ### 2.1.1
 ###### 2018-06-09
@@ -99,8 +95,6 @@
 - Magic [checker properties and methods](docs/compare.md) have been added
 - Proper [documentation](https://artkonekt.github.io/enum) has been created (extracted from readme + extended)
 
-## 2.0
-
 ### 2.0.2
 ###### 2017-09-26
 
@@ -110,7 +104,6 @@
 ###### 2017-09-14
 
 - `reset()` method has been added
-
 
 ### 2.0.0
 ###### 2017-09-13
@@ -126,14 +119,12 @@
 
 Development of v2 has been started.
 
-## 1.2
+## 1.x
 
 ### 1.2.0
 ###### 2016-12-14
 
 - Display texts can be fetched dynamically via callback method
-
-## 1.1
 
 ### 1.1.0
 ###### 2016-07-06
@@ -141,8 +132,6 @@ Development of v2 has been started.
 - Support for display texts has been added
 - **BC:** `__toString()` casting now takes display text instead of const values. However the result is the very same in case no display text is being used, since it falls back to the const value if no display text is specified.
 - Changelog started (added all backwards versions beginning from 1.0.0
-
-## 1.0
 
 ### 1.0.2
 ###### 2016-05-31
