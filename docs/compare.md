@@ -129,7 +129,8 @@ The magic checker **property format** is: `is_const_name` ie:
 - The part after `is_` has to be the const name in `snake_case` (all lowercase with underscore separators)
 
 _Examples:_
-```
+
+```text
 const ONE = 1           ==> is_one
 const LUCKY_LUKE = 'll' ==> is_lucky_luke
 ```
@@ -140,7 +141,8 @@ The magic checker **method format** is: `isConstName()` ie:
 - The part after `is` has to be the const name in `StudlyCase`
 
 _Examples:_
-```
+
+```text
 const ONE = 1           ==> isOne()
 const LUCKY_LUKE = 'll' ==> isLuckyLuke()
 ```
