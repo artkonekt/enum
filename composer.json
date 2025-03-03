@@ -17,7 +17,7 @@
         "php": "^8.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.0"
+        "phpunit/phpunit": "9 - 11"
     },
     "autoload": {
         "psr-4": { "Konekt\\Enum\\": "src/" }
