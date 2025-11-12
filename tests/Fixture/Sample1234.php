@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Contains the Sample1234 class.
  *

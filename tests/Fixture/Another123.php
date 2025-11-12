@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Contains the Another123 class.
  *

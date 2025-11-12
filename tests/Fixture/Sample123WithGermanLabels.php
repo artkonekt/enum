@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Contains the Sample123WithGermanLabels class.
  *

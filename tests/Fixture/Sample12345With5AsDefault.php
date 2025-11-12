@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Contains the Sample12345With5AsDefault class.
  *
