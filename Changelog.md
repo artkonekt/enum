@@ -2,8 +2,8 @@
 
 ## 4.x
 
-### Unreleased
-###### 2026-XX-YY
+### 4.2.1
+###### 2026-04-24
 
 - Added the missing ctype extension dependency to the `composer.json`
 - Tested and works with PHP 8.4 & 8.5
