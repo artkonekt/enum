@@ -3,7 +3,7 @@
 ## 4.x
 
 ### Unreleased
-###### 202-XX-YY
+###### 2026-XX-YY
 
 - Added the missing ctype extension dependency to the `composer.json`
 - Tested and works with PHP 8.4 & 8.5
@@ -120,7 +120,7 @@
 - Minimum PHP version is 7.0
 - Strict mode removed
 - `equals()` does type check
-- For more details refer to [UPGRADE-2.0.md](UPGRADE-2.0.md)
+- For more details refer to [Upgrade from v1 to v2](https://konekt.dev/enum/4.x/upgrade#from-v1-to-v2)
 
 ###### 2017-09-06
 
